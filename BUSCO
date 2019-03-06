@@ -59,9 +59,14 @@ E-value cutoff for BLAST searches.
 Allowed formats: 0.001 or 1e-03 (default: 1e-03)
 -sp SPECIES, --species SPECIES
 Name of existing Augustus species gene finding parameters.
-See Augustus documentation for available options.
+# eudicots -----Running Augustus prediction using arabidopsis as species
 Each lineage has a default species (see below on assessment sets).
 Selecting a closely-related species usually produces better results.
+
+ERROR
+INFO    [augustus]   
+Please find all logs related to Augustus errors here: /path/augustus_output/augustus.log
+
 #####################################
 2- Gene set (proteins) assessment
 python scripts/run_BUSCO.py -i SEQUENCE_FILE -o OUTPUT_NAME
@@ -87,3 +92,19 @@ BUSCO matches, and coordinates (for genome mode) or gene/protein IDs
 (for transcriptome or proteins mode).
 - missing_buscos_list_XXXX.tsv
 Contains a list of missing BUSCOs.
+######################################
+mkdir BUSCO_summaries
+
+cp run_XX1/short_summary_XX1.txt BUSCO_summaries/.
+cp run_XX2/short_summary_XX2.txt BUSCO_summaries/.
+cp run_XX3/short_summary_XX3.txt BUSCO_summaries/.
+
+python scripts/generate_plot.py –wd BUSCO_summaries
+python scripts/generate_plot.py –wd /full/path/to/my/folder/BUSCO_summaries
+
+#-wd PATH/NAME, --working_directory PATH/NAME Name or full path to folder containing BUSCO short_summary files.
+
+short_summary_XX1.txt the label would be XX1. You can modify this as long as you keep
+the naming convention: short_summary_[edit_name_here].txt or you can simply edit
+the R source code file to change any plotting parameters and produce a personalised bar chart
+running the code manually in your R environment.
