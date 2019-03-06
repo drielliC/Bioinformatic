@@ -1,0 +1,79 @@
+#BUSCO completeness assessments employ sets of Benchmarking Universal Single-Copy Orthologs 
+# to provide quantitative measures of the completeness of genome assemblies, 
+#annotated gene sets, and transcriptomes in terms of expected gene content.
+
+#Download the software BUSCO via terminal: 
+ wget "https://gitlab.com/ezlab/busco/-/archive/master/busco-master.zip"
+ 
+ #Download the subset of work: 
+ wget "https://busco.ezlab.org/datasets/prerelease/eudicotyledons_odb10.tar.gz"
+ 
+# running setup.py on the version of python chosen to run the tool.
+sudo python setup.py install
+
+#config
+cd config/
+cp config.ini.default config.ini 
+nano config.ini
+
+#edit
+[hmmsearch]
+path = /usr/bin/
+
+[augustus]
+path = /usr/bin/
+
+[gff2]
+path = /augustus/scripts
+[new_species]
+path = /augustus/scripts
+[optimize]
+path = /augustus/scripts
+
+#add this line at the end
+export BUSCO_CONFIG_FILE="/path/to/filename.ini"
+
+In this file, you must declare the paths to all dependencies (see below) and
+you can optionally define the required input parameters (described later in this document). 
+
+
+#exemple
+python scripts/run_BUSCO.py -i ./sample_data/target.fa -o SAMPLE -l ./sample_data/example/ -m genome -c 1 -sp fly
+INFO    The lineage dataset is: sample dataset BUSCO 2.0 (eukaryota)
+
+#if its ookkkkkkkkkkkkkkkk
+
+#Make dir and put all your data inside
+#mkdir myproject
+
+#RUN
+1- Genome assembly assessment
+python scripts/run_BUSCO.py -i SEQUENCE_FILE -o OUTPUT_NAME -l LINEAGE -m geno -c 24 -e 1e-05
+
+LINEAGE location of the BUSCO lineage data to use (e.g. eukaryota_odb9)
+(NB: without specifying a particular species, Augustus species
+parameters will be selected according to the predefined defaults)
+
+-c N, --cpu N
+Specify the number (N=integer) of threads/cores to use (default: 1).
+-e N, --evalue N
+E-value cutoff for BLAST searches.
+Allowed formats: 0.001 or 1e-03 (default: 1e-03)
+
+-sp SPECIES, --species SPECIES
+Name of existing Augustus species gene finding parameters.
+See Augustus documentation for available options.
+Each lineage has a default species (see below on assessment sets).
+Selecting a closely-related species usually produces better results.
+
+#############################output data
+- short_summary_XXXX.txt
+Contains a plain text summary of the results in BUSCO notation.
+Also gives a brief breakdown of the metrics.
+
+-full_table_XXXX.tsv
+Contains the complete results in a tabular format with scores and lengths of
+BUSCO matches, and coordinates (for genome mode) or gene/protein IDs
+(for transcriptome or proteins mode).
+- missing_buscos_list_XXXX.tsv
+Contains a list of missing BUSCOs.
