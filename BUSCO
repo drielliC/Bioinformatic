@@ -48,7 +48,7 @@ INFO    The lineage dataset is: sample dataset BUSCO 2.0 (eukaryota)
 
 #RUN
 1- Genome assembly assessment
-python scripts/run_BUSCO.py -i SEQUENCE_FILE -o OUTPUT_NAME -l LINEAGE -m geno -c 24 -e 1e-05
+python scripts/run_BUSCO.py -i SEQUENCE_FILE -o OUTPUT_NAME -l LINEAGE -m geno -c 1 -e 1e-05
 
 LINEAGE location of the BUSCO lineage data to use (e.g. eukaryota_odb9)
 (NB: without specifying a particular species, Augustus species
