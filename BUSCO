@@ -48,24 +48,34 @@ INFO    The lineage dataset is: sample dataset BUSCO 2.0 (eukaryota)
 
 #RUN
 1- Genome assembly assessment
-python scripts/run_BUSCO.py -i SEQUENCE_FILE -o OUTPUT_NAME -l LINEAGE -m geno -c 1 -e 1e-05
-
+python scripts/run_BUSCO.py -i SEQUENCE_FILE -o OUTPUT_NAME -l LINEAGE -m geno -c 1 
 LINEAGE location of the BUSCO lineage data to use (e.g. eukaryota_odb9)
 (NB: without specifying a particular species, Augustus species
 parameters will be selected according to the predefined defaults)
-
 -c N, --cpu N
 Specify the number (N=integer) of threads/cores to use (default: 1).
 -e N, --evalue N
 E-value cutoff for BLAST searches.
 Allowed formats: 0.001 or 1e-03 (default: 1e-03)
-
 -sp SPECIES, --species SPECIES
 Name of existing Augustus species gene finding parameters.
 See Augustus documentation for available options.
 Each lineage has a default species (see below on assessment sets).
 Selecting a closely-related species usually produces better results.
-
+#####################################
+2- Gene set (proteins) assessment
+python scripts/run_BUSCO.py -i SEQUENCE_FILE -o OUTPUT_NAME
+-l LINEAGE -m prot
+SEQUENCE_FILE gene set (protein amino acid sequences) file in FASTA format
+OUTPUT_NAME name to use for the run and temporary files (appended)
+LINEAGE location of the BUSCO lineage data to use (e.g. vertebrata_odb9)
+######################
+3- Transcriptome assessment
+python scripts/run_BUSCO.py -i SEQUENCE_FILE -o OUTPUT_NAME
+-l LINEAGE -m tran
+SEQUENCE_FILE transcript set (DNA nucleotide sequences) file in FASTA format
+OUTPUT_NAME name to use for the run and temporary files (appended)
+LINEAGE location of the BUSCO lineage data to use (e.g. fungi_odb9)
 #############################output data
 - short_summary_XXXX.txt
 Contains a plain text summary of the results in BUSCO notation.
