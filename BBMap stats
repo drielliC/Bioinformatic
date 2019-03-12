@@ -1,0 +1,5 @@
+#download
+wget "https://sourceforge.net/projects/bbmap/files/latest/download"
+
+#usage
+stats.sh in=genome.fa gc=gc.txt gcformat=4
