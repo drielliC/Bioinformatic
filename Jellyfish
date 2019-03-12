@@ -7,3 +7,26 @@ make
 sudo make install
 
 #usage
+jellyfish count -C -m 21 -s 1000000000 -t 10 -o 21mer_out *.fastq  *.fastq
+
+#s memoria (1GB de RAM)
+#t threads (10)
+#fastq colocar todos (incluindo Nossos dois mais Arabia)
+#m kmer lenght 21 (roda com 25 tbb)
+#c canonical kmers since the sequencing reads will come from boyh the foward and reverse strand of DNA.
+
+#then export the kmer count histogram 
+jellyfish histo -t 10 -o 21mer_out.histo 21mer_out 
+
+#entre 5 -20 ache o numero que tem a maior frequencia
+11 11 15230762
+12 12 15594907
+13 13 15416499
+14 14 14655690
+Para estimar o tamanho do genoma
+
+sum(as.numeric(dataframe19[2:9325,1]*dataframe19[2:9325,2]))/12
+
+[1] 305659151
+
+~ 305 Mb
