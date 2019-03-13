@@ -17,16 +17,21 @@ jellyfish count -C -m 21 -s 1000000000 -t 10 -o 21mer_out *.fastq  *.fastq
 
 #then export the kmer count histogram 
 jellyfish histo -t 10 -o 21mer_out.histo 21mer_out 
+head 21mer_out
 
-#entre 5 -20 ache o numero que tem a maior frequencia
-11 11 15230762
-12 12 15594907
-13 13 15416499
-14 14 14655690
-Para estimar o tamanho do genoma
+#open R software
+dataframe19 <- read.table("21mer_out.histo") #load the data into dataframe19
 
-sum(as.numeric(dataframe19[2:9325,1]*dataframe19[2:9325,2]))/12
+#make figure
+jpeg(file="saving_plot1.jpeg")
+plot(dataframe19[1:200,], type="l") #plots the data points 1 through 200 in the dataframe19 using a line
+dev.off()
 
+#According to the graph, the single copy region would be between points 2 and 28. 
+#Assuming the total number of data points is 9325, we can now calculate the total k-mers in the distribution.
+
+sum(as.numeric(dataframe19[2:9325,1]*dataframe19[2:9325,2]))
+
+#result
 [1] 305659151
-
 ~ 305 Mb
