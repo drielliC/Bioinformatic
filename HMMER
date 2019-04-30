@@ -1,0 +1,40 @@
+ wget "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_chromosome_files/TAIR10_chr_all.fas"
+ wget "https://pfam.xfam.org/family/PF03936/hmm"
+ 
+ #########################################################################
+##hmmsearch searches a profile against a sequence database. The file tutorial.fa is a small example of a FASTA file containing 45
+globin sequences.
+
+hmmsearch hmm TAIR10_chr_all.fas
+ 
+###################################################################### 
+#hmmbuild build profile from input multiple alignment
+
+ hmmbuild globins4.hmm globins4.sto
+ 
+extra commands
+#hmmalign make multiple sequence alignment using a profile
+#hmmsearch search profile against sequence database
+#hmmscan search sequence against profile database
+#hmmpress prepare profile database for hmmscan
+#nhmmscan search DNA sequence against a DNA profile database
+#hmmfetch retrieve profile(s) from a profile file
+#hmmstat show summary statistics for a profile file
+#hmmemit generate (sample) sequences from a profile
+#hmmlogo produce a conservation logo graphic from a profile
+#hmmconvert convert between different profile file formats
+#hmmpgmd search daemon for the hmmer.org website
+#makehmmerdb prepare an nhmmer binary database
+#hmmsim collect score distributions on random sequences
+#alimask add column mask to a multiple sequence alignment
+
+#The phmmer and jackhmmer programs search a single protein sequence
+against a protein sequence database, akin to BLASTP and PSI-BLAST
+#phmmer search single sequence against sequence database
+#jackhmmer iteratively search single sequence against database
+
+#nhmmer is the equivalent of hmmsearch and phmmer, but is capable of
+searching long, chromosome-size target DNA sequences. nhmmscan is
+the equivalent of hmmscan, capable of using chromosome-size DNA
+sequences as a query into a profile database. 
+#nhmmer search DNA query against DNA sequence database
