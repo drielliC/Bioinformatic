@@ -1,0 +1,16 @@
+Genome Annotation Generator software (v.1) (HALL et al., 2014)
+ wget "https://github.com/genomeannotation/GAG/tarball/master"
+ 
+python gag.py --fasta organism.fasta --gff organism.gff --out gag_output
+
+python gag.py\
+    --fasta walkthrough/annotation/genome.fasta\
+    --gff walkthrough/annotation/genome.gff\
+    --anno walkthrough/annotation/genome.annotations\
+    --out annotated
+    
+    result : genome.stats
+other outputs:
+in the genome.proteins.fasta, we just take the predict protein of each gene 
+in the genome.mrna.fasta just the mrna
+in genome.tbl we have location of each feature
