@@ -12,7 +12,6 @@ make install                      # optional: install HMMER programs and man pag
 
 1)file.fa
 2)profile
-ex..
 ###################
 
 wget "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_chromosome_files/TAIR10_chr_all.fas"
