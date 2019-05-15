@@ -1,4 +1,21 @@
- wget "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_chromosome_files/TAIR10_chr_all.fas"
+#Donwload
+http://hmmer.org/download.html
+#uncompress   
+tar xf hmmer-3.2.tar
+cd hmmer-3.2
+./configure
+make
+make check                        # optional: automated tests
+make install                      # optional: install HMMER programs and man pages
+(cd easel; make install)          # optional: install Easel tools too
+##
+
+1)file.fa
+2)profile
+ex..
+###################
+
+wget "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_chromosome_files/TAIR10_chr_all.fas"
  wget "https://pfam.xfam.org/family/PF03936/hmm"
  
  #########################################################################
