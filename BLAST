@@ -1,0 +1,20 @@
+|Program	    | Task Name |	Description |
+|blastp       |	blastp	  |Traditional BLASTP to compare a protein query to a protein database
+|blastp-short |	BLASTP    |optimized for queries shorter than 30 residues
+|blastn	      | blastn    |	Traditional BLASTN requiring an exact match of 11
+              |blastn-short |	BLASTN program optimized for sequences shorter than 50 bases
+              | megablast   |	Traditional megablast used to find very similar (e.g., intraspecies or closely related species) sequences
+              |dc-megablast	| Discontiguous megablast used to find more distant (e.g., interspecies) sequences
+
+
+db	                |	BLAST database name.
+query               | Query file name.
+evalue	  | 10.0	  |  Expect value (E) for saving hits
+subject	            |	File with subject sequence(s) to search.
+
+out
+
+  makeblastdb -in genes.fa -dbtype nucl -parse_seqids
+
+blastn -db genes.fa -query seqs.fa -evalue 1e-5 -num_threads 24 -out out.blastn.tsv  -outfmt 10
+
