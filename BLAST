@@ -14,7 +14,13 @@ subject	            |	File with subject sequence(s) to search.
 
 out
 
-  makeblastdb -in genes.fa -dbtype nucl -parse_seqids
 
+-best_hit_overhang | Best-Hits filtering algorithm 
+Aceptable range
+-H 0.1 to 0.25
+#############################################
+ makeblastdb -in test.fsa -parse_seqids -dbtype prot
+
+ 
 blastn -db genes.fa -query seqs.fa -evalue 1e-5 -num_threads 24 -out out.blastn.tsv  -outfmt 10
 
