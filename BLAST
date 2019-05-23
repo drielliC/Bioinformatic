@@ -88,8 +88,9 @@ When not provided, the default value is:
 Aceptable range
 -H 0.1 to 0.25
 #############################################
- makeblastdb -in test.fsa -parse_seqids -dbtype prot
-
- 
+exemple
+makeblastdb -in test.fsa -parse_seqids -dbtype prot
 blastn -db genes.fa -query seqs.fa -evalue 1e-5 -num_threads 24 -out out.blastn.tsv  -outfmt 10
+
+blastn -query transcripts.fa -out transcripts.blast.txt -task megablast -db refseq_rna -num_threads 12 -evalue 1e-10 -best_hit_score_edge 0.05 -best_hit_overhang 0.25 -outfmt 7 -perc_identity 50 -max_target_seqs 1 &
 
