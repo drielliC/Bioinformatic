@@ -87,6 +87,8 @@ When not provided, the default value is:
 -best_hit_overhang | Best-Hits filtering algorithm 
 Aceptable range
 -H 0.1 to 0.25
+Overhang  - consider the size of alignment
+Score Edge - consider the size of query
 #############################################
 exemple
 makeblastdb -in test.fsa -parse_seqids -dbtype prot
