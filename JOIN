@@ -65,7 +65,27 @@ Reisling White Germany Terrible!
 Riocha Red Spain Meh
 
 ########################
-join -t\; -1 1 -2 2 <(cat Euniflora1.txt | tr \\t \; | sort -k1 -t\;) <( cat Euniflora2.txt | tr \\t \; | sort -k2 -t\;) | tr \; \\t > Euniflora3.out
-cut -f2 uniflorasorted.csv | sort -u | head
+join -t\; -1 1 -2 2 <(cat File1.txt | tr \\t \; | sort -k1 -t\;) <( cat File2.txt | tr \\t \; | sort -k2 -t\;) | tr \; \\t > File3.out
 
+-t delimitador pode ser qualquer caractere
+-t , quando é csv
 tr \\t \;    $ troca tabulação por ;
+
+tr transforma espaço 
+tr \\ n 
+wc -l  conta linha
+d+ digito
+\n quebra linha
+paste < (    )    < 
+
+Related linux commands:
+
+csplit - Split a file into context-determined pieces
+cut - Divide a file into several parts 
+fmt - Reformat paragraph text 
+fold - Wrap input lines to fit in specified width
+head - Output the first part of file(s) 
+paste - Merge lines of files
+split - Split a file into fixed-size pieces
+tail - Output the last part of files 
+Equivalent Windows command: FC - Compare two files
