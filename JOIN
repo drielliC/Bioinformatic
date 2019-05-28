@@ -1,0 +1,71 @@
+cat concatenate
+
+Will sort your myfile file on the third column if your file don't have any separator.
+
+$ cat myfile 
+ax5aa 
+aa3ya 
+fg7ds 
+pp0dd 
+aa1bb
+
+$ sort -k 1.3,1.3 myfile 
+pp0dd 
+aa1bb
+aa3ya 
+ax5aa 
+fg7ds 
+
+If the columns are separated by something else, you need the -t option to specify the separator.
+
+$ sort -u -k 3 a
+a b ca d
+a c c c
+a b c d
+a b  c e
+
+$ sort -u -k 3,3 a
+a b c d
+a b  c e
+a b ca d
+
+ -i, --ignore-case ignora maiúsculas/minúsculas ao comparar campos
+
+--check-order     verifica se a entrada está corretamente ordenada, mesmo se
+                      todas as linhas de entrada forem pareáveis
+  --nocheck-order   não verifica se a entrada está ordenada corretamente
+  --header          trata a primeira linha de cada arquivo como cabeçalho de
+                      campo; exibe-os sem tentar pareá-los
+                      
+                      
+                      #####obs registros repetidos podem bugar e nome.t1 também costuma bugar###
+                      ###sort troca tab pro espaço ai o join não encontra as colunas## 
+                      ###para isso substituir -t por \;####
+                      
+                      
+                      
+
+To join files using different fields the -1 and -2 options can be passed to join. In the following example there are two files wine.txt and reviews.txt.
+cat wine.txt
+Red Beaunes France
+White Reisling Germany
+Red Riocha Spain
+
+cat reviews.txt
+Beaunes Great!
+Reisling Terrible!
+Riocha Meh
+
+These files can be joined by specifying the fields that should be used to join the files. Common to both files is the name of the wine. In wine.txt this is the second field. In reviews.txt this is the first field. The files can be joined using -1 and -2 by specifying these fields.
+
+join -1 2 -2 1 <(sort -k 2 wine.txt) <(sort reviews.txt)
+
+Beaunes Red France Great!
+Reisling White Germany Terrible!
+Riocha Red Spain Meh
+
+########################
+join -t\; -1 1 -2 2 <(cat Euniflora1.txt | tr \\t \; | sort -k1 -t\;) <( cat Euniflora2.txt | tr \\t \; | sort -k2 -t\;) | tr \; \\t > Euniflora3.out
+cut -f2 uniflorasorted.csv | sort -u | head
+
+tr \\t \;    $ troca tabulação por ;
