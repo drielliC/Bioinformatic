@@ -1,0 +1,15 @@
+from Bio import SeqIO
+
+record_dict = SeqIO.to_dict(SeqIO.parse("file.fna", "fasta"))
+renomeados = []
+
+for line in open("tps_genes.fna.fai"):
+    spl = line.split('\t')
+    seq = record_dict[spl[0]]
+    seq.id = spl[1]
+    renomeados.append(seq)
+    
+print("Sequecias processadas: %d" % len(renomeados))
+
+with open("example.fasta", "w") as output_handle:
+    SeqIO.write(renomeados, output_handle, "fasta")
