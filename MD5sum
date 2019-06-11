@@ -1,0 +1,2 @@
+cat md5.fa | md5sum
+218d9f4da154806ede68a5032cb527f3  -
