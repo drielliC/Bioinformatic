@@ -1,0 +1,1 @@
+perl -ne 'if(/^>(\S+)/){$c=grep{/^$1$/}qw(pg1 pg2 pgn)}print if $c' file.fa > out.fa  
