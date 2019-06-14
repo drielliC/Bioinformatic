@@ -97,3 +97,4 @@ blastn -db genes.fa -query seqs.fa -evalue 1e-5 -num_threads 24 -out out.blastn.
 
 blastn -query transcripts.fa -out transcripts.blast.txt -task megablast -db refseq_rna -num_threads 12 -evalue 1e-10 -best_hit_score_edge 0.05 -best_hit_overhang 0.25 -outfmt 7 -perc_identity 50 -max_target_seqs 1 &
 
+% identity   | alignment length | mismatches | gap opens | q. start | q. end | s. start | s. end | evalue | bit score |
