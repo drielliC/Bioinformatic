@@ -1,0 +1,3 @@
+augustus --species=arabidopsis --introns=on --stop=on --cds=on --codingseq=on file.fna > output.gff
+
+#The fields contain:: seqname   source     feature    start   end   score   strand   frame    transcript and gene name
