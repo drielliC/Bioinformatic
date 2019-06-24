@@ -1,0 +1,8 @@
+#Download
+wget "https://github.com/shenwei356/seqkit/releases/download/v0.10.1/seqkit_linux_amd64.tar.gz"
+tar -zxvf seqkit_linux_amd64.tar.gz
+cp seqkit /usr/local/bin/
+mkdir -p $HOME/bin/; cp seqkit $HOME/bin/
+
+#USAGE ----remove seqs < 100 bp
+seqkit seq -m 100 testesize.fa -o out.fa
