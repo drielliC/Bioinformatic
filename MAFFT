@@ -1,0 +1,10 @@
+wget "https://mafft.cbrc.jp/alignment/software/mafft-7.427-gcc_fc6.x86_64.rpm"
+su
+dpkg -i mafft_x.xxx-x_amd64.deb
+exit
+
+
+#usage
+mafft --auto --inputorder test.fa > resultMAFF
+
+
