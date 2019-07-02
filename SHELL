@@ -1,0 +1,4 @@
+#retira o simbolo do seu arquivo
+tr -d '*' < file.fas > final_file.fas
+tr -d '\n' < file.fas > final_file.fas
+
