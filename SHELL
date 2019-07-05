@@ -2,3 +2,10 @@
 tr -d '*' < file.fas > final_file.fas
 tr -d '\n' < file.fas > final_file.fas
 
+#troca quebra linha por espaço
+cat ids_monoterp | tr \\n " " | head
+
+# -d, delimita o character de divisão
+# -f2 delimita o campo que quer cortar
+#sort -u ordena e deixa characteres unicos
+cat file | cut -d, -f2 | sort -u > ids_monoterp.out
