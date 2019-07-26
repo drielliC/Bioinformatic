@@ -11,3 +11,6 @@ cat ids_monoterp | tr \\n " " | head
 cat file | cut -d, -f2 | sort -u > ids_monoterp.out
 
 cat -n file # count the number of lines of a file
+
+#count gene size
+awk '/^>/ {if (seqlen){print seqlen}; print ;seqlen=0;next; } { seqlen += length($0)}END{print seqlen}' file.fa
