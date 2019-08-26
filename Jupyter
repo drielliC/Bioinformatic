@@ -1,0 +1,9 @@
+#Installation
+su
+apt install python3-pip
+pip install jupyterlab
+python3 -m pip install --upgrade pip
+python3 -m pip install jupyter
+exit
+#usage 
+jupyter notebook
