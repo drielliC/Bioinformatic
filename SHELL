@@ -14,3 +14,5 @@ cat -n file # count the number of lines of a file
 
 #count gene size
 awk '/^>/ {if (seqlen){print seqlen}; print ;seqlen=0;next; } { seqlen += length($0)}END{print seqlen}' file.fa
+
+sort names-list.txt | uniq
