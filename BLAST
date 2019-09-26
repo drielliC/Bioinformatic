@@ -104,3 +104,4 @@ tblastn
 We consider 0.1 to 0.25 to be an acceptable range for the -best_hit_overhang parameter and 0.05 to 0.25 to be an acceptable range for the -best_hit_score_edge parameter. Increasing the value of the overhang parameter eliminates a higher number of matches, but increases the running time; increasing the score_edge parameter removes smaller number of hits.
 
 % identity   | alignment length | mismatches | gap opens | q. start | q. end | s. start | s. end | evalue | bit score |
+https://www.ncbi.nlm.nih.gov/books/NBK279684/table/appendices.T.options_common_to_all_blast/
