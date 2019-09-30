@@ -19,3 +19,9 @@ sort names-list.txt | uniq
 
 #remove a pattern line from a file
 sed '/pattern to match/d' ./infile
+
+
+
+
+To extract the lines from data.txt with the genes listed in genelist.txt:
+grep -w -F -f genelist.txt data.txt > newdata.txt
