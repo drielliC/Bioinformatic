@@ -25,3 +25,9 @@ sed '/pattern to match/d' ./infile
 
 To extract the lines from data.txt with the genes listed in genelist.txt:
 grep -w -F -f genelist.txt data.txt > newdata.txt
+
+sed 's/\.$//' yourfile
+
+# Escape the special character . using \.
+# Put an achor $ to only remove it from the end.
+# To make infile changes use -i option of sed.
