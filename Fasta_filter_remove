@@ -1,0 +1,26 @@
+#!/usr/bin/python
+
+## This script filter sequences from multifasta where ids input
+
+## bio@mikeias.net
+
+## Licence MIT
+## REV OUT/19
+
+import sys
+from Bio import SeqIO
+
+
+def filtrar(fasta, filtro, show=None):
+    record_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
+    remv = set([l.strip() for l in open(filtro).readlines() if len(l) > 1 ])
+    SeqIO.write([ record_dict[x] for x in record_dict if not x in remv], fasta + ".filtered.fasta", "fasta")
+    if not show is None:
+        print(open(fasta + ".filtered.fasta").read())
+
+
+if __name__ == "__main__":
+    if len(sys.argv) > 2:
+        filtrar(*sys.argv[1:])
+    else:
+        print("usage: fastaFilter in.fasta filter.txt [show]")
