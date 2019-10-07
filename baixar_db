@@ -1,0 +1,5 @@
+wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nr.*.tar.gz'         
+| Non-redundant protein sequences from GenPept, Swissprot, PIR, PDF, PDB, and NCBI RefSeq
+
+cat nr.*.tar.gz | tar -zxvi -f - -C .
+
