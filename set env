@@ -1,0 +1,6 @@
+Environment Variables in Linux are prefixed with a dollar sign ($) such as $HOME or $HOSTNAME. 
+To show your currently defined environment variables in a terminal, run env.
+
+export PATH="$HOME/bin:$PATH"
+
+export PATH=$PATH:$HOME/BEASTv1.10.4/bin/
