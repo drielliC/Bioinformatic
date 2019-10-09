@@ -143,3 +143,30 @@ View options:
 
 Getseq options:
 --seq                  Sequence numbers to display.
+
+
+
+
+#####################################
+usage 
+$ diamond makedb --in nr.faa -d nr
+$ diamond blastx -d nr -q reads.fna -o matches.m8
+
+Adding the executables to the system path
+
+To add the BEAUti and BEAST executables to the system’s path (to run from outside the /bin directory), you need to edit your system’s profile:
+
+nano ~/.bash_profile
+and add the path to the /bin directory:
+
+export PATH=$PATH:$HOME/BEASTv1.10.4/bin/
+To reload the changes to the profile immediately without logging out or restarting your computer, run the following:
+
+source ~/.bash_profile
+Verify your current system’s path settings by typing:
+
+echo $PATH
+Creating symbolic links in a directory of choice
+
+ln -s Downloads/BEASTv1.10.4/bin/beauti beauti
+ln -s Downloads/BEASTv1.10.4/bin/beast beast
