@@ -34,10 +34,6 @@ Maxiterate 1000 localpair
  --maxiterate number
  number cycles of iterative refinement are performed. Default: 0 
  
- Speed-oriented methods: 
-  --retree number
-    Guide tree is built number times in the progressive stage. Valid with 6mer distance. Default: 2 
-
  ############################################3
  
 --ep number
@@ -53,7 +49,20 @@ mafft  --ep 0 --localpair --maxiterate 1000 ––thread 24 > resultMAFF
 
 mafft --ep 0 --genafpair --maxiterate 1000 allTPS_cds_raw_1018seqs_nc.fas > ep0_genefpair_maxiterate1000_aa.fasta
 
+###################################
+Ainda não tentei
 
+
+
+
+Speed-oriented methods: 
+  --retree number
+    Guide tree is built number times in the progressive stage. Valid with 6mer distance. Default: 2 
+Align the sequences using an iteratively refined global alignment by typing 
+mafft --retree100 --maxiterate 1000 --fmodel --localpair file.fasta > mafft-it.fastai
+
+
+mafft --retree100 --maxiterate 1000 --fmodel --globalpair --ep 1.00 --op 0.00 nrITS.fasta > mafft-it10.fasta
 
 
 
