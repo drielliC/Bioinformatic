@@ -5,6 +5,62 @@ exit
 
 
 #usage
-mafft --auto --inputorder test.fa > resultMAFF
+mafft --auto --inputorder test.fa ––thread 24 > resultMAFF
+
+Strategy: 
+FFT-NS-2 (for less than 100,000 sequences; ∼2 times slower but more accurate than FFT-NS-1)
+
+
+
+
+Parameters tested:
+Default
+
+Accuracy-oriented methods:
+Maxiterate
+Maxiterate 1000 globalpair
+Maxiterate 1000 localpair
+
+
+ --auto
+    Automatically selects an appropriate strategy from L-INS-i, FFT-NS-i and FFT-NS-2, according to data size. Default: off (always FFT-NS-2) 
+
+--globalpair
+    All pairwise alignments are computed with the Needleman-Wunsch algorithm. More accurate but slower than --6merpair. Suitable for a set of globally alignable sequences. Applicable to up to ~200 sequences. A combination with --maxiterate 1000 is recommended (G-INS-i). Default: off (6mer distance is used) 
+
+--localpair
+    All pairwise alignments are computed with the Smith-Waterman algorithm. More accurate but slower than --6merpair. Suitable for a set of locally alignable sequences. Applicable to up to ~200 sequences. A combination with --maxiterate 1000 is recommended (L-INS-i). Default: off (6mer distance is used) 
+
+ --maxiterate number
+ number cycles of iterative refinement are performed. Default: 0 
+ 
+ Speed-oriented methods: 
+  --retree number
+    Guide tree is built number times in the progressive stage. Valid with 6mer distance. Default: 2 
+
+ ############################################3
+ 
+--ep number
+    Offset value, which works like gap extension penalty, for group-to-group alignment. Default: 0.123 
+    the --ep 0 option is recommended to allow large gaps. 
+
+
+
+
+mafft  --ep 0 --localpair --maxiterate 1000 ––thread 24 > resultMAFF
+#### mafft --ep 0 --localpair --maxiterate 1000 allTPS_cds_raw_1018seqs_aa.fas > ep0_localpair_maxiterate1000_aa.fasta
+
+
+mafft --ep 0 --genafpair --maxiterate 1000 allTPS_cds_raw_1018seqs_nc.fas > ep0_genefpair_maxiterate1000_aa.fasta
+
+
+
+
+
+
+
+
+
+
 
 
