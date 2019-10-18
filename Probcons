@@ -1,0 +1,5 @@
+wget "http://probcons.stanford.edu/probcons_v1_12.tar.gz"
+gunzip probcons_vX_XX.tar.gz 
+tar xvf probcons_vX_XX.tar
+cd probcons
+make 
