@@ -1,0 +1,77 @@
+############
+Alignment
+
+############
+Best Model  _ Protest
+selection of best-fit models of aminoacid replacement for the data
+smallest Akaike Information Criterion (AIC), Bayesian Information Criterion (BIC) score or Decision Theory Criterion (DT)
+obtains model-averaged estimates of different parameters (including a model-averaged phylogenetic tree) and calculates their importance(
+ProtTest differs from its nucleotide analog jModeltest in that it does not include likelihood ratio tests, as not all models included in ProtTest are nested.
+Includes 15 different rate matrices that result in 120 different models when we consider rate variation among sites 
+(+I: invariable sites; +G: gamma-distributed rates) and the observed amino acid frequencies (+F).
+
+cd $PROTTEST_HOME
+
+	$ java -jar ~/Desktop/softwares/prottest-3.4.2/prottest-3.4.2.jar -i examples/COX2_PF0016/alignment -F -AIC -BIC -threads 4
+  or
+  
+  ./prottest3 -i examples/COX2_PF0016/alignment -F -AIC -BIC -tc 0.5 -threads 4
+  
+  These are the parameters of the sequential execution:
+
+     -i alignment_filename
+     -t tree_filename      (optional) [default: NJ tree]
+     -o output_filename
+           
+     -log enabled/disabled
+            
+     -[matrix]
+            Include matrix (Amino-acid) = JTT LG DCMut MtREV MtMam MtArt Dayhoff WAG 
+	                                  RtREV CpREV Blosum62 VT HIVb HIVw FLU 
+                If you don't specify any matrix, all matrices displayed above will
+                be included.
+     -I
+            Include models with a proportion of invariable sites
+     -G
+            Include models with rate variation among sites and number of categories
+     -IG
+            include models with both +I and +G properties
+     -all-distributions
+            Include models with rate variation among sites, number of categories and both
+            
+     -ncat number_of_categories
+            Define number of categories for +G and +I+G models [default: 4]
+     -F
+            Include models with empirical frequency estimation 
+     -AIC
+            Display models sorted by Akaike Information Criterion (AIC)
+     -BIC
+            Display models sorted by Bayesian Information Criterion (BIC)
+     -AICC
+            Display models sorted by Corrected Akaike Information Criterion (AICc)
+     -DT
+            Display models sorted by Decision Theory Criterion
+     -all
+            Displays a 7-framework comparison table
+  
+  -S optimization_strategy
+            Optimization strategy mode: [default: 0]
+             		0: Fixed BIONJ JTT
+             		1: BIONJ Tree
+             		2: Maximum Likelihood tree
+             		3: User defined topology
+     -s moves
+            Tree search operation for ML search: 
+            NNI (fastest), SPR (slowest), BEST (best of NNI and SPR) [default: NNI]
+     -t1      				
+            Display best-model's newick tree [default: false]
+     -t2      				
+            Display best-model's ASCII tree  [default: false]
+     -tc consensus_threshold 
+            Display consensus tree with the specified threshold, between 0.5 and 1.0
+            [0.5 = majority rule consensus ; 1.0 = strict consensus]
+     -threads number_or_threads			 [default: 1]
+    
+    -verbose
+            Verbose mode [default: false]
+
