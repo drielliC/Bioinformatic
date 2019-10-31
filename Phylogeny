@@ -74,4 +74,18 @@ cd $PROTTEST_HOME
     
     -verbose
             Verbose mode [default: false]
+###########################################################	    #######################
+./beauti
+JTT+F  (F não tem)
+General matrix (Jones et al., 1992).
 
+Clock (uncorrelated relaxed clock)
+Tree ( Speciation: Birth-Death process)
+
+Length of chain : 30000000
+Echo state to screen every: 3000
+Log parameters every: 3000
+
+
+~/beast/bin/beast -threads 4 beast.xml
+java -jar beast.jar -seed 1234 example.xml
