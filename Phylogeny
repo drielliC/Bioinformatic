@@ -76,16 +76,41 @@ cd $PROTTEST_HOME
             Verbose mode [default: false]
 ###########################################################	    #######################
 ./beauti
+ the model of molecular evolution
 JTT+F  (F não tem)
 General matrix (Jones et al., 1992).
+
+Um modelo de relogio molecular determina como a taxa de mutação varia com o
+tempo; relogio estrito (todas as sequencias envolvidas divergem
+umas das outras com mesma taxa) e relogios relaxados [84] (taxas podem variar ao
+longo da arvore de relações filogeneticas).
 
 Clock (uncorrelated relaxed clock)
 Tree ( Speciation: Birth-Death process)
 
-Length of chain : 30000000
-Echo state to screen every: 3000
-Log parameters every: 3000
+Length of chain : 
+Echo state to screen every:
+Log parameters every: 
 
 
 ~/beast/bin/beast -threads 4 beast.xml
 java -jar beast.jar -seed 1234 example.xml
+####################################################                       #########################
+Tracer usado para visualização dos resultados e análise de diagnóstico da saída do BEAST.
+Verificação dos valores de ESS (Efective Sample Sizes) estimados < 200 – cadeias insuficiente
+carregar .log
+
+########################################                  ################################################3
+
+Combining results from multiple replicates
+LogCombiner
+
+TreeAnnotator
+
+~/beast/bin/
+
+
+
+
+
+
