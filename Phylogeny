@@ -80,12 +80,12 @@ cd $PROTTEST_HOME
 JTT+F  (F não tem)
 General matrix (Jones et al., 1992).
 
-Um modelo de relogio molecular determina como a taxa de mutação varia com o
-tempo; relogio estrito (todas as sequencias envolvidas divergem
-umas das outras com mesma taxa) e relogios relaxados [84] (taxas podem variar ao
-longo da arvore de relações filogeneticas).
+Um modelo de relogio molecular determina como a taxa de mutação varia com o tempo; 
+relogio estrito (todas as sequencias envolvidas divergem umas das outras com mesma taxa) 
+e relogios relaxados [84] (taxas podem variar ao longo da arvore de relações filogeneticas).
 
-Clock (uncorrelated relaxed clock)
+
+Clock (strict x uncorrelated relaxed clock)
 Tree ( Speciation: Birth-Death process)
 
 Length of chain : 
