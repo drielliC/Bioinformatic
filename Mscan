@@ -1,3 +1,5 @@
 Download 
 wget "http://github.com/tanghaibao/mcscan/tarball/master"
 
+
+python -m jcvi.compara.catalog ortholog egrandis guava --no_strip_names --cscore=.99
