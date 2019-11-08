@@ -88,7 +88,7 @@ e relogios relaxados [84] (taxas podem variar ao longo da arvore de relações f
 Clock (strict x uncorrelated relaxed clock)
 Tree ( Speciation: Birth-Death process)
 
-Length of chain : "mcmc" chainLength="10.000.000" 
+Length of chain : "mcmc" chainLength="10.000.000"  
 Echo state to screen every:logEvery="1000"
 Log parameters every: 1000
 
