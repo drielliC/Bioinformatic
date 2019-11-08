@@ -88,9 +88,9 @@ e relogios relaxados [84] (taxas podem variar ao longo da arvore de relações f
 Clock (strict x uncorrelated relaxed clock)
 Tree ( Speciation: Birth-Death process)
 
-Length of chain : 
-Echo state to screen every:
-Log parameters every: 
+Length of chain : "mcmc" chainLength="10.000.000" 
+Echo state to screen every:logEvery="1000"
+Log parameters every: 1000
 
 
 ~/beast/bin/beast -threads 4 beast.xml
@@ -101,13 +101,32 @@ Verificação dos valores de ESS (Efective Sample Sizes) estimados < 200 – cad
 carregar .log
 
 ########################################                  ################################################3
-
 Combining results from multiple replicates
 LogCombiner
+Select the files .trees and .log
 
+Usage: ~/Desktop/softwares/BEASTv1.10.4/bin/logcombiner  <input-file-name1> [<input-file-name2> ...] <output-file-name>
+################################## ###################### ########################### ##################### #############
 TreeAnnotator
+TreeAnnotator is a program to summarize the information from a sample of trees produced by BEAST onto a single “target” tree. 
+The summary information includes the posterior probabilities of the nodes in the target tree, the posterior estimates and HPD limits of the node heights and (in the case of a relaxed molecular clock model) the rates.
 
-~/beast/bin/
+ treeannotator [-heights <keep|median|mean|ca>] [-burnin <i>] [-burninTrees <i>] [-limit <r>] [-target <target_file_name>] [-help] [-forceDiscrete] [-hpd2D <the HPD interval to be used for the bivariate traits>] <input-file-name> [<output-file-name>]
+    -heights an option of 'keep' (default), 'median', 'mean' or 'ca'
+    -burnin the number of states to be considered as 'burn-in'
+    -burninTrees the number of trees to be considered as 'burn-in'
+    -limit the minimum posterior probability for a node to be annotated
+    -target specifies a user target tree to be annotated
+    -forceDiscrete forces integer traits to be treated as discrete traits.
+    -hpd2D specifies a (vector of comma seperated) HPD proportion(s)
+
+ exemples:
+~/Desktop/softwares/BEASTv1.10.4/bin/treeannotator -burnin 10000 -limit 0.5  test.trees allTPS_cds_1017seqs_alignment_semvitis_gblock_317aa.tree_final
+ 
+ 
+1.000.000 de gerações com árvores geradas a cada 1.000
+Resulta em 1.000 árvores
+ 
 
 
 
