@@ -1,4 +1,6 @@
-wget "ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.??.tar.gz"
+###########wget "ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.??.tar.gz"
+wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nr.*.tar.gz'
+cat nr.*.tar.gz | tar -zxvi -f - -C .
 
 #/bin/bash
 for file in *.gz
@@ -7,6 +9,6 @@ tar -zxvpf "$file"
 rm "$file"
 done
 
-cat nr.*.tar.gz | tar -zxvi -f - -C .
+
 
 blastn -db path_to_the_folder/nt -query fastafile
