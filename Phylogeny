@@ -93,7 +93,7 @@ Echo state to screen every:logEvery="1000"
 Log parameters every: 1000
 
 
-~/beast/bin/beast -threads 4 beast.xml
+ ~/Desktop/softwares/BEASTv1.10.4/bin/beast -threads 24 beast.xml
 java -jar beast.jar -seed 1234 example.xml
 ####################################################                       #########################
 Tracer usado para visualização dos resultados e análise de diagnóstico da saída do BEAST.
