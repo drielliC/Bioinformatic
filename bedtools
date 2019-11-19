@@ -1,1 +1,17 @@
+apt-get install bedtools
+bedtools flank [OPTIONS] -i <BED/GFF/VCF> -g <GENOME> [-b or (-l and -r)]
 
+Option 	Description
+-b 	Increase the BED/GFF/VCF entry by the same number base pairs in each direction. Integer.
+-l 	The number of base pairs to subtract from the start coordinate. Integer.
+-r 	The number of base pairs to add to the end coordinate. Integer.
+-s 	Define -l and -r based on strand. For example. if used, -l 500 for a negative-stranded feature, it will add 500 bp to the end coordinate.
+-pct 	Define -l and -r as a fraction of the feature’s length. E.g. if used on a 1000bp feature, -l 0.50, will add 500 bp “upstream”. Default = false.
+
+samtools faidx input.fa
+cut -f1,2 input.fa.fai > sizes.genome
+
+
+
+
+ bedtools getfasta [OPTIONS] -fi <input FASTA> -bed <BED/GFF/VCF> -fo test.fa.out
