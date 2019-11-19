@@ -1,1 +1,23 @@
-https://github.com/beagle-dev/beagle-lib/wiki/LinuxInstallInstructions
+wget "https://github.com/beast-dev/beast-mcmc/releases/download/v1.10.4/BEASTv1.10.4.tgz"
+tar -zxvf BEASTv1.10.4.tgz
+nano ~/.bash_profile
+export PATH=$PATH:$HOME/BEASTv1.10.4/bin/
+source ~/.bash_profile
+
+sudo apt-get install openjdk-8-jre
+apt-get install openjdk-8-jdk
+
+
+apt-add-repository ppa:webupd8team/java
+apt-get update
+apt-get install oracle-java8-installer
+
+JAVA_HOME=/usr/lib/jvm/java-8-oracle
+JRE_HOME=/usr/lib/jvm/java-8-oracle/jre
+
+###############################
+./beast -beagle_gpu -beagle_order 1 ../examples/Benchmarks/benchmark1.xml
+
+  -beagle_off Dont use the BEAGLE library
+    -beagle Use BEAGLE library if available (default on)
+   
