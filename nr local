@@ -2,10 +2,18 @@
 wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nr.*.tar.gz'
 cat nr.*.tar.gz | tar -zxvi -f - -C .
 
-wget ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA/nr.gz
-diamond makedb --in nr.gz -d nr
+
 
 wget http://github.com/bbuchfink/diamond/releases/download/v0.9.29/diamond-linux64.tar.gz
 tar xzf diamond-linux64.tar.gz
+
+wget ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA/nr.gz
+ls -l filename
+-rw-rw-r-- 1 andreiat andreiat 21631091360 Nov 26 07:25 nr.gz
+
+diamond makedb --in nr.gz -d nr
+
+./diamond blastp --max-target-seqs 5 --evalue 1e-5 -d nr -q ../Documents/Psidium/protein/PSI
+_YW_protein.fasta -o PSI_YW_protein.out
 
 https://github.com/bbuchfink/diamond
