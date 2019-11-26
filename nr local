@@ -2,13 +2,10 @@
 wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nr.*.tar.gz'
 cat nr.*.tar.gz | tar -zxvi -f - -C .
 
-#/bin/bash
-for file in *.gz
-do
-tar -zxvpf "$file"
-rm "$file"
-done
+wget ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA/nr.gz
+diamond makedb --in nr.gz -d nr
 
+wget http://github.com/bbuchfink/diamond/releases/download/v0.9.29/diamond-linux64.tar.gz
+tar xzf diamond-linux64.tar.gz
 
-
-blastn -db path_to_the_folder/nt -query fastafile
+https://github.com/bbuchfink/diamond
