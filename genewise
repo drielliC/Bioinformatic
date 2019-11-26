@@ -1,0 +1,5 @@
+wget "https://www.ebi.ac.uk/%7Ebirney/wise2/wise2.4.1.tar.gz"
+tar -xvf wise2.4.1.tar.gz
+ cd wise2.4.1
+ cd src
+ make all
