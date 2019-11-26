@@ -3,5 +3,7 @@ tar -xvf wise2.4.1.tar.gz
  cd wise2.4.1
  cd src
  make all
+ 
+ genewisedb -prodb protein.pep human.f
 
 
