@@ -4,6 +4,6 @@ tar -xvf wise2.4.1.tar.gz
  cd src
  make all
  
- genewisedb -prodb protein.pep human.f
+ genewisedb -prodb protein.pep human.f -sum -pseudo > out
 
 
