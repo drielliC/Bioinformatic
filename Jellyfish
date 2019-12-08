@@ -6,21 +6,26 @@ tar -xvf jellyfish-2.2.9.tar.gz
 make
 sudo make install
 
-#usage
-jellyfish count -C -m 21 -s 1000000000 -t 10 -o 21mer_out *.fastq  *.fastq
+gunzip -d input.fastq.gz
+https://bioinformatics.uconn.edu/genome-size-estimation-tutorial/#
 
-#s memoria (1GB de RAM)
-#t threads (10)
-#fastq colocar todos (incluindo Nossos dois mais Arabia)
-#m kmer lenght 21 (roda com 25 tbb)
-#c canonical kmers since the sequencing reads will come from boyh the foward and reverse strand of DNA.
+jellyfish count -t 10 -C -m 19 -s 5G -o 19mer_out --min-qual-char=? /common/Tutorial/Genome_estimation/sample_read_1.fastq /common/Tutorial/Genome_estimation/sample_read_2.fastq
+
+-t    -treads=unit32       Number of treads to be used in the run. eg: 1,2,3,..etc.
+-C    -both-strands        Count both strands
+-m    -mer-len=unit32      Length of the k-mer    
+-s    -size=unit32         Hash size / memory allocation  
+-o    -output=string       Output file name
+--min-quality-char         Base quality value. Version 2.2.3 of Jellyfish uses the “Phred” score, where "?" = 30
 
 #then export the kmer count histogram 
-jellyfish histo -t 10 -o 21mer_out.histo 21mer_out 
-head 21mer_out
+jellyfish histo -o 19mer_out.histo 19mer_out
+
 
 #open R software
-dataframe19 <- read.table("21mer_out.histo") #load the data into dataframe19
+> getwd()
+> setwd("/Users/seila")
+dataframe19 <- read.table("19mer_out.histo") #load the data into dataframe19
 
 #make figure
 jpeg(file="saving_plot1.jpeg")
