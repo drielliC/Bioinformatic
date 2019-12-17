@@ -82,6 +82,7 @@ cd $PROTTEST_HOME
 ###########################################################	    #######################
 ./beauti
  the model of molecular evolution
+ O modelo com menor valor e AIC é considerado o modelo de melhor ajuste.
 JTT+F  (F não tem)
 General matrix (Jones et al., 1992).
 
