@@ -1,0 +1,4 @@
+samtools faidx file.fasta
+awk 'BEGIN {FS="\t"}; {print $1 FS "0" FS $2}' file.fasta.fai  > file.bed
+
+bedtools getfasta [OPTIONS] -fi <input FASTA> -bed <BED/GFF/VCF>
