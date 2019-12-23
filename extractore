@@ -1,5 +1,6 @@
 sudo apt-get install aegean
-xtractore -t CDS -o timema_cristinae.fa timema_cristinae.gff Timema_cristinae_scaffolds.fas
+xtractore --type=gene -o timema_cristinae.fa timema_cristinae.gff Timema_cristinae_scaffolds.fas
+
 
 Usage: xtractore [options] features.gff3 sequences.fasta
   Options:
