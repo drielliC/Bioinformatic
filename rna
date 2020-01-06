@@ -1,0 +1,19 @@
+https://github.com/alexdobin/STAR
+
+
+
+STAR-master/bin/Linux_x86_64/STAR
+
+STAR --runThreadN 4  --runMode genomeGenerate --genomeDir  RD_star_index  --genomeFastaFiles RD_genoma.fasta --sjdbGTFfile arquivo_RD.gtf
+
+depois repete com outro genoma YW
+
+
+Mapeamento
+
+
+STAR-master/bin/Linux_x86_64/STAR   --runThreadN 4   --genomeDir caminho completo para o RD_star_index    --readFilesIn reads_forward.fastq   reads_reverse.fastq      --outFileNamePrefix RD_folha_rep1   --outSAMtype BAM
+
+repetir o comando acima para cada replica e genoma
+
+trocando os nomes dos arquivos dos reads e de saida, por exemplo se tiver 3 bibliotecas de folha seria RD_folha_rep1 , RD_folha_rep2, RD_folha_rep3....
