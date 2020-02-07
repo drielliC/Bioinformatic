@@ -16,15 +16,9 @@ Includes 15 different rate matrices that result in 120 different models when we 
 (+I: invariable sites; +G: gamma-distributed rates) and the observed amino acid frequencies (+F).
 
 cd $PROTTEST_HOME
-
-	$ java -jar ~/Desktop/softwares/prottest-3.4.2/prottest-3.4.2.jar -i examples/COX2_PF0016/alignment -F -AIC -BIC -threads 4
-  or
-  
-  ./prottest3 -i examples/COX2_PF0016/alignment -F -AIC -BIC -tc 0.5 -threads 4
-  
-  These are the parameters of the sequential execution:
-
-     -i alignment_filename
+java -jar ~/Desktop/softwares/prottest-3.4.2/prottest-3.4.2.jar -i examples/COX2_PF0016/alignment -F -AIC -BIC -threads 4 -all-distributions > protest.out
+    
+    -i alignment_filename
      -t tree_filename      (optional) [default: NJ tree]
      -o output_filename
            
