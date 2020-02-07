@@ -1,0 +1,33 @@
+#Quality Control – Run QC on the FastQ file from the sequencer
+
+pip install cutadapt
+http://www.htslib.org/
+
+fastqc SRR453566_yeast_rnaseq.fq.gz *para varios arquivos?
+ls -ltr 
+firefox SRR453566_yeast_rnaseq_fastqc.html &
+
+
+#Trimming - http://www.bioinformatics.babraham.ac.uk/projects/trim_galore/ Turn the raw fastQ file into a trimmed fastQ file containing only good quality data Trim_Galore is run from the command line and is a wrapper around another program called Cutadapt.
+You can run Trim Galore with default options and it will try to detect the adapter that is present and remove it. 
+
+wget"http://www.bioinformatics.babraham.ac.uk/projects/download.html#trim_galore"
+trim_galore –-fastqc SRR453566_yeast_rnaseq.fq.gz
+
+#Mapping – Take the data in the trimmed fastQ file and map it to a reference genome to create a BAM file of mapped positions
+
+hisat2-build yeast_genome.fa Cat_red_index
+hisat2-build yeast_genome.fa Cat_yellow_index
+
+hisat2_extract_splice_sites.py yeast_gene_models.gtf > yeast_splice_sites.txt
+
+
+hisat2 -x yeast_index --known-splicesite-infile yeast_splice_sites.txt -p 2 -U SRR453566_yeast_rnaseq_trimmed.fq.gz | samtools view -bS - > SRR453566_yeast_rnaseq.hisat.bam
+
+-x : Specifies the index file to use – this is the basename for the index which you created in the “Creating a genome index” step
+--known-splicesite-infile : Pre-populates the search with the locations of the splice sites you extracted from the GTF file when you ran extract_splice_sites.py.
+-p 2 : This tells hisat2 that it can use 2 CPU cores on the machine. Short read mapping scales very efficiently across cores so if you have more cores available then you should use them to speed up your analysis.
+-U : Specifies the fastq file of sequence reads to map. If you had paired end data and therefore 2 input files you would use -1 and -2 to specify the two files instead of –U
+| samtools view -bS - > : The final part of the command actually sends (pipes) the output of hisat into another program called samtools. The purpose of this is to compress the raw sam format output from hisat into the more compact bam format.
+
+# Differential Expression analysis with DESeq2
