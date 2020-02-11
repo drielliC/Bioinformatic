@@ -92,12 +92,17 @@ Length of chain : "mcmc" chainLength="10.000.000"
 Echo state to screen every:logEvery="1000"
 Log parameters every: 1000
 
+- set Gamma Category Count to 4.
+- select estimate for shape -- assuming you want to estimate it from your data and do not already have an estimate.
+- set Proportion Invariant to something larger than zero, say 0.1.
+- select estimate for Proportion Invariant -- again, assuming you do not have an estimate for proportion invariant already.
 
  ~/Desktop/softwares/BEASTv1.10.4/bin/beast -threads 24 beast.xml
 java -jar beast.jar -seed 1234 example.xml
 
 BEAST2
 ~/Downloads/BEAST2/bin/beast -threads 10 ~/Desktop/Driii/2020/Euc_Pca_alignment_343seq_gblock_152sitios_aa_beast2.xml
+
 ####################################################                       #########################
 Tracer usado para visualização dos resultados e análise de diagnóstico da saída do BEAST.
 Verificação dos valores de ESS (Efective Sample Sizes) estimados < 200 – cadeias insuficiente
