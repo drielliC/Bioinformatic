@@ -1,33 +1,158 @@
 #Quality Control – Run QC on the FastQ file from the sequencer
+sudo apt-get update -y
+sudo apt-get install -y fastqc
 
-pip install cutadapt
-http://www.htslib.org/
+fastqc [-o output dir] [--(no)extract] [-f fastq|bam|sam] 
+           [-c contaminant file] seqfile1 .. seqfileN
 
-fastqc SRR453566_yeast_rnaseq.fq.gz *para varios arquivos?
-ls -ltr 
-firefox SRR453566_yeast_rnaseq_fastqc.html &
+fastqc -o leaveall --noextract -f fastq tread_1.fq.gz read_2.fq.gz -t 8 
 
+  
+#######################################################################################
+sudo apt install cutadapt
 
-#Trimming - http://www.bioinformatics.babraham.ac.uk/projects/trim_galore/ Turn the raw fastQ file into a trimmed fastQ file containing only good quality data Trim_Galore is run from the command line and is a wrapper around another program called Cutadapt.
-You can run Trim Galore with default options and it will try to detect the adapter that is present and remove it. 
+cutadapt -m 10 -q 20 -o tp53_r2.fastq_trimmed.fastq.gz tp53_r2.fastq.gz
+    -m 10: will discard all reads that would be shorter than a read length of 10 after the trimming,
+    -q 20: will trim low-quality bases from the 3’ end of the reads; if two comma-separated cutoffs are given, the 5’ end is trimmed with the first cutoff, the 3’ end with the second,
+    -o FILE_NAME: the output file name.
 
-wget"http://www.bioinformatics.babraham.ac.uk/projects/download.html#trim_galore"
-trim_galore –-fastqc SRR453566_yeast_rnaseq.fq.gz
+https://ro-che.info/articles/2018-06-19-cutting-adapters
+cutadapt --cores=10 -a GATCGGAAGAGCACACGTCTGAACTCCAGTCACCCGTCCCGATCTCGTAT -A ATCGGAAGAGCACACGTCTGAACTCCAGTCACCCGTCCCGATCTCGTATG -o leaverd/leave1_1_rd_trimmed.fastq -p leaverd/leave1_2_rd_trimmed.fastq leave1_1_rd.fastq leave1_2_rd.fastq --overlap 4 --minimum-length 40 
+
+sudo apt-get update -y
+sudo apt-get install -y trimmomatic
+java -jar ~/Documents/Psidium/transcripts/analises/Trimmomatic-0.39/trimmomatic-0.39.jar PE -phred33 ../leave1_1_rd.fastq ../leave1_2_rd.fastq leave1_1_rd_trimmed.fastq leave1_2_rd_trimmed.fastq LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:40
+
+##############################################################################################################################
 
 #Mapping – Take the data in the trimmed fastQ file and map it to a reference genome to create a BAM file of mapped positions
 
-hisat2-build yeast_genome.fa Cat_red_index
-hisat2-build yeast_genome.fa Cat_yellow_index
+~/Documents/Psidium/montagem$ hisat2-build PSI_RD_final_assembly.fasta  PSI_RD_final_assembly_index
 
-hisat2_extract_splice_sites.py yeast_gene_models.gtf > yeast_splice_sites.txt
+hisat2 -p N --dta-cufflinks -x path/to/reference/fileName -1 path/to/fastqFile/sample_1.fastq -2 path/to/fastqFile/sample_2.fastq -S /path/to/outDir/fileName.sam &> /path/to/outDir/fileName.sam.info
+hisat2 -p 10 --dta-cufflinks -x PSI_RD_final_assembly_index -1 ../transcripts/analises/leave1_1_rd.fastq -2 ../transcripts/analises/leave1_2_rd.fastq -S leave1.sam
+
+    -p N is the number of threads that will be used by the program.
+    --dta-cufflinks will generate a output that is optimal for downstream analysis with cufflinks
+    -x /path/to/HiSAT2genome/fileName is the path to a pre-rendered reference library that HiSAT2 uses to map reads to the genome.fileName is the part of the files in the folder without the endings .bt2
+    -1 /path/to/read1/sample_1.fastq is where you should add your forward fastq files that you will map to the reference.
+    -2 /path/to/read1/sample_2.fastq is where you should add your reverse fastq files that you will map to the reference.
+    -s /path/to/output/fileName.sam is the fileName of the samfile that will tell were the reads mapped to the reference.
+    > /path/to/output/fileName.sam.info will give the statistics of how many of the reads that mapped that is generated from HiSAT2.
+
+This should run fairly quickly and put a file called fileName.sam in the directory that you specified with -s. 
+
+####################################################################################################
+Converting SAM files to BAM files
+
+samtools sort -@ 10 -o leav1_RD_hisat.bam  leave1.sam
 
 
-hisat2 -x yeast_index --known-splicesite-infile yeast_splice_sites.txt -p 2 -U SRR453566_yeast_rnaseq_trimmed.fq.gz | samtools view -bS - > SRR453566_yeast_rnaseq.hisat.bam
+    -@: number of cores used
+    -o: samtools output assigned by user
 
--x : Specifies the index file to use – this is the basename for the index which you created in the “Creating a genome index” step
---known-splicesite-infile : Pre-populates the search with the locations of the splice sites you extracted from the GTF file when you ran extract_splice_sites.py.
--p 2 : This tells hisat2 that it can use 2 CPU cores on the machine. Short read mapping scales very efficiently across cores so if you have more cores available then you should use them to speed up your analysis.
--U : Specifies the fastq file of sequence reads to map. If you had paired end data and therefore 2 input files you would use -1 and -2 to specify the two files instead of –U
-| samtools view -bS - > : The final part of the command actually sends (pipes) the output of hisat into another program called samtools. The purpose of this is to compress the raw sam format output from hisat into the more compact bam format.
+####################################################################################################
+Transcript assembly and quantification with StringTie
+StringTie assembles transcripts from RNA-seq reads that have been aligned to the genome,
+first grouping the reads into distinct gene loci and then assembling each locus into as many isoforms as are needed to explain the data.
 
-# Differential Expression analysis with DESeq2
+git clone https://github.com/gpertea/stringtie
+cd stringtie
+make release
+
+convert GFF file to GTF format
+gffread /common/Tutorial/Arabidopsis/Athaliana_167_TAIR10.gene.gff3 -T -o Athaliana_167_TAIR10.gene.gtf
+
+~/Desktop/softwares/stringtie -p 10 -G /path/Athaliana_167_TAIR10.gene.gtf -o Athaliana_root_1.gtf -l Athaliana /common/Tutorial/Arabidopsis/ReadAlignment/Athaliana_root_1.bam
+~/Desktop/softwares/stringtie/stringtie -p 10 -G ../../gff/PSI_RD_final_assembly.fasta.augustus.gtf -o PSI_RD_leave1_hisat_stringtie.gtf -l PSI_RD leave1_RD_Hisat.bam 
+    -p: number of processors
+    -G: Reference Genome 
+    -o: output gtf file
+    -l: SAM file mapped by HISAT2
+
+merge these GTF files into one single file
+we first need to make a document which serves as a index for stringtie to read.
+Create a txt file with vi, then enter files generated from the previous step, as shown below:
+
+
+PSI_RD_leave1_hisat_stringtie.gtf 
+PSI_RD_leave2_hisat_stringtie.gtf 
+PSI_RD_leave3_hisat_stringtie.gtf 
+
+stringtie --merge -p 8 -G /common/Tutorial/Arabidopsis/genes/Athaliana_167_TAIR10.gene.gtf -o stringtie_merged.gtf /common/Tutorial/Arabidopsis/genes/mergelist.txt
+~/Desktop/softwares/gffcompare/gffcompare -r ../../gff/PSI_RD_final_assembly.fasta.augustus.gtf -G -o merged leave_RD_stringtie_merged.gtf
+
+
+
+cd /some/build/dir
+  git clone https://github.com/gpertea/gclib
+  git clone https://github.com/gpertea/gffcompare
+  cd gffcompare
+  make release
+
+
+mdkir ballgown/
+~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G leave_RD_stringtie_merged.gtf -o ballgown/ballgown_RD_leave1.gtf leav1_RD_hisat.bam
+~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G leave_RD_stringtie_merged.gtf -o ballgown/ballgown_RD_leave2.gtf leav2_RD_hisat.bam
+~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G leave_RD_stringtie_merged.gtf -o ballgown/ballgown_RD_leave3.gtf leav3_RD_hisat.bam
+
+#########################################################################################################################
+Differential Expression Analysis
+
+nano matrixfile
+
+ID      condition       reps
+
+Leave_RD        F       1
+
+Leave_RD        F       2
+
+Leave_RD        F       3
+
+
+R
+
+
+install.packages("devtools",repos="http://cran.us.r-project.org")
+
+source(″http://www.bioconductor.org/biocLite.R″)
+biocLite(c(″alyssafrazee/RSkittleBrewer″,″ballgown″, ″genefilter″,″dplyr″,″devtools″))
+
+library(ballgown)
+library(RSkittleBrewer)
+library(genefilter)
+library(dplyr)
+library(ggplot2)
+library(gplots)
+library(devtools)
+dir <- "~/workspace/R/Arabidopsis" ##Define your own working directory accordingly
+setwd(dir)
+
+
+    Ballgown_input_files: count files (*ctab files) for each sample
+
+        e_data.ctab: exon-level expression measurements.
+
+        i_data.ctab: intron- (i.e., junction-) level expression measurements
+
+        t_data.ctab: transcript-level expression measurements
+
+        e2t.ctab: table with two columns, e_id and t_id, denoting which exons belong to which transcripts
+
+        i2t.ctab: table with two columns, i_id and t_id, denoting which introns belong to which transcripts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
