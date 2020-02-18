@@ -96,6 +96,8 @@ mdkir ballgown/
 ~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G leave_RD_stringtie_merged.gtf -o ballgown/ballgown_RD_leave2.gtf leav2_RD_hisat.bam
 ~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G leave_RD_stringtie_merged.gtf -o ballgown/ballgown_RD_leave3.gtf leav3_RD_hisat.bam
 
+post-processing of StringTie merge output to append ref_gene_id info to the MSTRG gene_id
+
 #########################################################################################################################
 Differential Expression Analysis
 
