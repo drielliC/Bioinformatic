@@ -97,9 +97,15 @@ cd /some/build/dir
 
 
 mdkir ballgown/
-~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G merged_prep.gtf -o ballgown/ballgown_RD_leave1.gtf leave1_RD_hisat.bam
-~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G merged_prep.gtf -o ballgown/ballgown_RD_leave2.gtf leave2_RD_hisat.bam
-~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G merged_prep.gtf -o ballgown/ballgown_RD_leave3.gtf leave3_RD_hisat.bam
+
+ ~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G ../merged_prep.gtf -o RD_leave1/ballgown_RD_leave1.gtf  -A RD_leave1/gene_abundances.tsv ../leave1_RD_hisat.bam                              
+ ~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G ../merged_prep.gtf -o RD_leave2/ballgown_RD_leave2.gtf -A RD_leave2/gene_abundances.tsv ../leave2_RD_hisat.bam                              
+ ~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G ../merged_prep.gtf -o RD_leave3/ballgown_RD_leave3.gtf -A RD_leave3/gene_abundances.tsv ../leave3_RD_hisat.bam                                     
+ 
+ 
+ ~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G ../merged_prep.gtf -o YW_leave1/ballgown_YW_leave1.gtf -A YW_leave1/gene_abundances.tsv  ../leave1_YW_hisat.bam                                     
+ ~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G ../merged_prep.gtf -o YW_leave2/ballgown_YW_leave2.gtf -A YW_leave2/gene_abundances.tsv ../leave2_YW_hisat.bam
+ ~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G ../merged_prep.gtf -o YW_leave3/ballgown_YW_leave3.gtf -A YW_leave3/gene_abundances.tsv ../leave3_YW_hisat.bam                                     
  
 # how many transcripts?
 cat stringtie_merged.gtf | grep -v "^#" | awk '$3=="transcript" {print}' | wc -l
