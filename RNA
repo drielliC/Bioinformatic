@@ -51,6 +51,9 @@ samtools sort -@ 10 -o leav1_RD_hisat.bam  leave1.sam
     -@: number of cores used
     -o: samtools output assigned by user
 
+# remove SAM files
+rm map/*.sam
+
 ####################################################################################################
 Transcript assembly and quantification with StringTie
 StringTie assembles transcripts from RNA-seq reads that have been aligned to the genome,
@@ -80,9 +83,11 @@ PSI_RD_leave2_hisat_stringtie.gtf
 PSI_RD_leave3_hisat_stringtie.gtf 
 
 stringtie --merge -p 8 -G /common/Tutorial/Arabidopsis/genes/Athaliana_167_TAIR10.gene.gtf -o stringtie_merged.gtf /common/Tutorial/Arabidopsis/genes/mergelist.txt
-~/Desktop/softwares/gffcompare/gffcompare -r ../../gff/PSI_RD_final_assembly.fasta.augustus.gtf -G -o merged leave_RD_stringtie_merged.gtf
+~/Desktop/softwares/gffcompare/gffcompare -r ../../gff/PSI_RD_final_assembly.fasta.augustus.gtf -G -o merged stringtie_merged.gtf
 
 
+##post-processing of StringTie merge output to append ref_gene_id info to the MSTRG gene_id
+perl mstrg_prep.pl stringtie_merged.gtf > merged_prep.gtf
 
 cd /some/build/dir
   git clone https://github.com/gpertea/gclib
@@ -92,12 +97,13 @@ cd /some/build/dir
 
 
 mdkir ballgown/
-~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G leave_RD_stringtie_merged.gtf -o ballgown/ballgown_RD_leave1.gtf leav1_RD_hisat.bam
-~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G leave_RD_stringtie_merged.gtf -o ballgown/ballgown_RD_leave2.gtf leav2_RD_hisat.bam
-~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G leave_RD_stringtie_merged.gtf -o ballgown/ballgown_RD_leave3.gtf leav3_RD_hisat.bam
-
-post-processing of StringTie merge output to append ref_gene_id info to the MSTRG gene_id
-
+~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G merged_prep.gtf -o ballgown/ballgown_RD_leave1.gtf leave1_RD_hisat.bam
+~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G merged_prep.gtf -o ballgown/ballgown_RD_leave2.gtf leave2_RD_hisat.bam
+~/Desktop/softwares/stringtie/stringtie -e -B -p 10 -G merged_prep.gtf -o ballgown/ballgown_RD_leave3.gtf leave3_RD_hisat.bam
+ 
+# how many transcripts?
+cat stringtie_merged.gtf | grep -v "^#" | awk '$3=="transcript" {print}' | wc -l
+    160053
 #########################################################################################################################
 Differential Expression Analysis
 
