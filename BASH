@@ -31,3 +31,19 @@ sed 's/\.$//' yourfile
 # Escape the special character . using \.
 # Put an achor $ to only remove it from the end.
 # To make infile changes use -i option of sed.
+
+
+##########################################################################################################################
+Para adicionar um caminho ao PATH : Isso vai evitar que eu gaste meu tempo entrado toda hora no BEAST 
+
+lem@ppgbm1:~$ nano .bashrc 
+
+Adiciona o caminho: export PATH=$PATH:/home/lem/Downloads/BEAST2/bin/ 
+
+sudo apt-get update 
+
+lem@ppgbm1:~$ exit 
+
+logout 
+
+Connection to 143.54.184.227 closed. 
