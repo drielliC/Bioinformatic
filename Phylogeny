@@ -74,8 +74,7 @@ java -jar ~/Desktop/softwares/prottest-3.4.2/prottest-3.4.2.jar -i examples/COX2
     -verbose
             Verbose mode [default: false]
 	    
-	    
-	     java -jar ~/Downloads/jmodeltest-2.1.10/jModelTest.jar -d ProB_AA_kinase.fas -f -i -g 4 -s 11 -AICc -DT -BIC -AIC -a -tr 10 -o jmodel.o
+java -jar ~/Downloads/jmodeltest-2.1.10/jModelTest.jar -d ProB_AA_kinase.fas -f -i -g 8 -s 11 -AICc -DT -BIC -AIC -a -tr 10 -o jmodel.o
 ut
 
 -a
