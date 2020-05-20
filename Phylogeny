@@ -246,6 +246,7 @@ The summary information includes the posterior probabilities of the nodes in the
  exemples:
 ~/Desktop/softwares/BEASTv1.10.4/bin/treeannotator -burnin 10000 -limit 0.5  test.trees allTPS_cds_1017seqs_alignment_semvitis_gblock_317aa.tree_final
  
+ ~/BEAST2 treeannotator -burnin 10 -heights mean -limit 0.5 test.trees out.txt
  
 1.000.000 de gerações com árvores geradas a cada 1.000
 Resulta em 1.000 árvores
