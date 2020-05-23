@@ -15,6 +15,9 @@ ProtTest differs from its nucleotide analog jModeltest in that it does not inclu
 Includes 15 different rate matrices that result in 120 different models when we consider rate variation among sites 
 (+I: invariable sites; +G: gamma-distributed rates) and the observed amino acid frequencies (+F).
 
+wget https://github.com/ddarriba/prottest3/releases/download/3.4.2-release/prottest-3.4.2-20160508.tar.gz
+ tar -xvf prottest-3.4.2-20160508.tar.gz
+
 cd $PROTTEST_HOME
 java -jar ~/Desktop/softwares/prottest-3.4.2/prottest-3.4.2.jar -i examples/COX2_PF0016/alignment -F -AIC -BIC -threads 4 -all-distributions > protest.out
     
