@@ -1,10 +1,11 @@
 Turorial Codeml – Linux
-Para instalar o programa
-Baixar o arquivo paml4.9h.tgz
-Abrir o terminal e ir até a pasta onde salvou o arquivo utilizando cd.
-Descompactar o arquivo com o comando: tar xf paml4.9h.tgz
-Entrar na pasta do paml pelo terminal: cd paml4.9h
-E dar os seguintes comandos no terminal, uma linha de cada vez:
+
+wget http://abacus.gene.ucl.ac.uk/software/paml4.9j.tgz
+
+tar xf paml4.9j.tgz
+cd paml4.9h
+
+
 rm bin/*.exe
 cd src
 make -f Makefile
