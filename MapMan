@@ -1,0 +1,20 @@
+MapMan
+
+Download:
+https://mapman.gabipd.org/web/guest/mapman-version-3.5.1
+
+sudo apt install libxext6
+apt-get install libxrender1:i386 libxtst6:i386 libxi6:i386
+
+apt-file search libXext.so.6 
+libxext6: /usr/lib/x86_64-linux-gnu/libXext.so.6 
+libxext6: /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0
+libxext6-dbg: /usr/lib/debug/usr/lib/x86_64-linux-gnu/libXext.so.6.4.0 
+
+
+java -jar MapManInst-3.5.1R2.jar
+
+Vai abrir a tela de instalação
+
+PASSO 4:
+ /usr/bin/java
