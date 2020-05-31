@@ -2,6 +2,7 @@ sudo dnf install screen
 apt install screen
 
 screen -S NAME_OF_COMMAND
+screen -ls 
 
 Open a new screen 
 [Ctrl]+[a]+[c] 
