@@ -1,1 +1,54 @@
-https://evosite3d.blogspot.com/2011/09/identifying-positive-selection-in.html
+Tutorial:
+http://wiki.cathdb.info/wiki-beta/doku.php?id=tutorials:eccb_t2_codeml
+
+Perguntas:
+https://lorenzogatti.me/2016_FiPS_Tutorials/solutions_tutorial02.html
+
+https://embnet.vital-it.ch/CoursEMBnet/PagesPHYL07/Exercises/day2/day2.html
+
+#####################
+Statistical tests of adaptive evolution among sites and lineages (branch-site models)
+seqfile = PBANKA_030280.pal2nal.paml * sequence data filename
+ treefile = tree.txt * tree structure file name
+ outfile = mlc-M2-BS-H0 * main result file name
+ runmode = 0 * 0: user tree; 1: semi-automatic; 2: automatic
+ * 3: StepwiseAddition; (4,5):PerturbationNNI; ...
+ seqtype = 1 * 1:codons; 2:AAs; 3:codons-->AAs
+ CodonFreq = 2 * 0:1/61 each, 1:F1X4, 2:F3X4, 3:codon table
+ ndata = 1 * number of gene alignments to be analysed
+ clock = 0 * 0:no clock, 1:clock; 2:local clock
+ model = 2 * models for codons: 0:one, 1:b, 2:2 or more dN/dS
+ * ratios for branches
+ NSsites = 2 * 0:one w;1:neutral;2:selection;
+ * 3:discrete;4:freqs;
+* 5:gamma;6:2gamma;7:beta;8:beta&w;9:beta&gamma;
+ icode = 0 * 0:universal code; 1:mammalian mt; 2-10:see below
+ fix_omega = 1 * 1: omega or omega_1 fixed, 0: estimate
+ omega = 1 * initial or fixed omega for codons
+ cleandata = 0 * remove sites with ambiguity data (1:yes, 0:no)?
+ 
+ This will run the null model of the branch-site test of positive selection. We allow ω
+to vary among sites, but we have a fixed class of sites where ω = 1 for the background
+and foreground (the P. falciparum) branches. No sites with ω > 1 are allowed. Once
+the analysis has completed, look at the log-likelihood value in the mlc-M2-BS-H0 file:
+lnL(ntime: 9 np: 13): -1129.989551 +0.000000
+
+Now open codeml-M2-BS.ctl and edit the following options:
+outfile = mlc-M2-BS-H1 * main result file name
+fix_omega = 0 * 1: omega or omega_1 fixed, 0: estimate
+Now run codeml again. We now allow ω > 1 for some sites in the foreground branch,
+but ω = 1 for the same sites in the background branch. The output will be written to
+the mlc-MS-BS-H1 file. Look for the log-likelihood value:
+lnL(ntime: 9 np: 14): -1129.989562 +0.000000
+10
+The likelihood ratio statistic is 2×(-1130 + 1130) = 0. There is no improvement in the
+likelihood when we allow ω > 1 in the foreground branch. In the branch-site test of
+positive selection, the LRT test statistic does not follow a χ
+2 distribution since some of
+the required regularity conditions are not met (Yang and dos Reis 2011). However,
+using a χ
+2
+ with one degree of freedom makes the test conservative. Using the CHI2
+table with can see that the test is not statistically significant in this case. Our perl
+script codeml_branch_site_models.pl will calculate the branch-site test for thousands
+of genes.
