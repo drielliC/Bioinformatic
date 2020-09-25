@@ -13,9 +13,12 @@ For H0: model=2, NSsite=2, fix_omege=1, omega=1.
 
 For H1: model=2, NSsite=2, fix_omege=0, omega=1.
 
-2∆l=lnL1-lnL0
+For each model, we get the log likelihood value (lnL1 for the alternative and lnL0 for the null models), from which we compute the Likelihood Ratio Test (LRT).
 
-d.f = np1-np0
+The 2×(lnL1-lnL0) follows a χ² curve with degree of freedom of 1, so we can get a p-value for this LRT.
+eg. ΔLRT = 2×(lnL1 - lnL0) = 2×(-4707.210163 - (-4710.222252)) = 6.024178
+
+The degree of freedom is 1 (np1 - np0 = 46 - 45).
 
 I would do LRT, BC and FDR at 5% and 1% level of significance, and consider the sites >95% BEB confidence with FDR 1% level of significance.
 ###################
