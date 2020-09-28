@@ -60,3 +60,21 @@ lnL(ntime: 9 np: 14): -1129.989562 +0.000000
 The likelihood ratio statistic is 2×(-1130 + 1130) = 0. There is no improvement in the
 likelihood when we allow ω > 1 in the foreground branch. In the branch-site test of positive selection, the LRT test statistic does not follow a χ2 distribution since some of
 the required regularity conditions are not met (Yang and dos Reis 2011). However, using a χ2 with one degree of freedom makes the test conservative. 
+###########################################################################################################################################
+
+
+Selective pressure was tested based on the phylogeny of genes by comparing the nonsynonymous/synonymous substitution ratios (ω = d N /d S ) with ω = 1, < 1, and > 1, 
+which indicate neutral evolution, purifying selection, and positive selection, respectively.
+We selected F3X4 as codon frequency model, as it accounts for the most important feature of the mutation process, the unequal base frequencies, 
+and the correction for transition/transversion bias is obtained by ML estimation of the kappa parameter.
+Considering the fact that positive selection often operates episodically on a few amino acid sites in a small number of lineages of a phylogenetic tree, 
+the modified branch-site model A was run for each gene in each lineage across the phylogenetic tree of the monocots. 
+The LRT (likelihood ratio test) is a general method for testing assumptions (model parameters) through comparison of two competing hypotheses. 
+We used branch-site model A to construct branch-site test 2, which is also called the branch-site test of positive selection. 
+The null and alternative hypotheses are as follows: 
+Null hypothesis (branch site model A, with ω2 = 1 fixed): model = 2; NSsites = 2; fix_omega = 1; omega = 1. 
+Alternative hypothesis (branch site model A, with ω2 estimated): model = 2; NSsites = 2; fix_omega = 0; omega = 1.5 (or any value > 1). 
+Unlike branch-site model, site-specific models allowing ω to vary among sites were used to determine whether particular amino-acid residues within gen families have been subject to positive selection. 
+We use an LRT comparing M0 (one-ratio) with M3 (discrete) to test for variable selective pressure among sites, and two LRTs to test for sites evolving by positive selection, comparing: 
+M1a (Nearly Neutral) against M2a (Positive Selection), and M7 (beta) against M8 (beta & ω). The PP (posterior probability) for the sites under positive selection was calculated 
+by the Bayes empirical Bayes (BEB) method.
