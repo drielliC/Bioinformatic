@@ -1,0 +1,11 @@
+ Then, we used the programs FunDi and GroupSim to validate the hypothesis that the conserved domains were associated with divergence (change) in function among GAs,
+ and performed the GroupSim to identify the specificity determining positions (SDPs).
+ 
+ GroupSim
+ 
+ Sites identified as being functionally divergent or positively selective by all or two of these three programs were highlighted in the 3D protein structure of GA oxidases, 
+ which could be tested with direct experimental techniques in the future.
+ 
+ In order to reduce computation time and the potential impact of synonymous site saturation due to sequence divergence [77],
+ the positive selection test was conducted on the site and branch-site models with 46 less divergent GAox homologs from six grass species of monocots.
+ https://link.springer.com/article/10.1186/s12862-015-0490-2#Sec2
