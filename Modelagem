@@ -9,3 +9,5 @@
  In order to reduce computation time and the potential impact of synonymous site saturation due to sequence divergence [77],
  the positive selection test was conducted on the site and branch-site models with 46 less divergent GAox homologs from six grass species of monocots.
  https://link.springer.com/article/10.1186/s12862-015-0490-2#Sec2
+
+ Other important positively selected sites tested in the site model were mapped onto the surface of the three-dimensional structure by Pymol (http://PyMOLwiki.org). 
