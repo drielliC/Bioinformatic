@@ -1,3 +1,9 @@
+USAGE number of exons, mean exon length, the number of introns, and the mean intron length
+
+genestats test.gff | \
+awk -v OFS="\t" '{ exon_sum += $3; exon_len += $4; intron_sum += $5; intron_len += $6 } END { print exon_sum, exon_len / exon_sum, intron_sum, intron_len / intron_sum }'
+#################################################################
+
 #!/usr/bin/env bash
 
 usage()
