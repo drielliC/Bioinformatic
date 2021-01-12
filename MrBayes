@@ -1,0 +1,26 @@
+exe /home/lem/Downloads/MrBayes/examples/finch.nex
+
+lset rates=gamma
+lset aamodel=jones
+mcmcp ngen=20000 samplefreq=100 diagnfreq=1000 printfreq=100
+mcmcp filename=testseq1
+sump filename=testseq1.bp
+
+
+prset aamodelpr=fixed(jones)
+
+
+"lset" sets amino acid substitution model to be JTT (Jones, 1992). 
+"mcmcp" sets parameters for Markov Chain Monte Carlo: 
+we set to sample every 100 generation, to print results to a screen every 100th generation, save outfile named testseq1. 
+"mcmc" actually runs the chain, and we set it to run for 20000 generations. 
+After the run is finished, "sump" command will plot the logL vs. generation number, that allows to detect the burnin.
+
+"sumt filename=testseq1c.t burnin=20", 
+where you need to substitute burnin value with the number you obtained in the previous step of the exercise 
+(Note: that burnin values is the # of generations divided by 50, since we sample every 50th generation). 
+This command creates a consensus tree, and shows posterior probabilities of the clades.
+> sumt relburnin=yes burninfrac=0.25 conformat=simple
+
+Etapa 5 – Sumarização das amostras dos parâmetros
+> sump
