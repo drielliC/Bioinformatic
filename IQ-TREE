@@ -1,0 +1,4 @@
+Nguyen L-T, Schmidt HA, von Haeseler A, Minh BQ (2014) IQ-TREE: a fast and effective stochastic algorithm for estimating maximum-likelihood phylogenies. Mol Biol Evol 32(1):268–274
+
+Finally, JTT+F+R8 was selected as the optimal sequence evolution model, and a maximum likelihood (ML) phylogenetic tree was constructed by running IQ-TREE version1.6.7 
+(Nguyen et al. 2014) and with ultrafast bootstrapping (-bb 1000).
