@@ -2,7 +2,7 @@ exe /home/lem/Downloads/MrBayes/examples/finch.nex
 
 lset rates=gamma
 lset aamodel=jones
-mcmcp ngen=20000 samplefreq=100 diagnfreq=1000 printfreq=100
+mcmcp ngen=20.000 samplefreq=100 diagnfreq=1000 printfreq=100
 mcmcp filename=testseq1
 sump filename=testseq1.bp
 
@@ -24,3 +24,8 @@ This command creates a consensus tree, and shows posterior probabilities of the 
 
 Etapa 5 – Sumarização das amostras dos parâmetros
 > sump
+
+
+#############################################
+The chain was run for 2.5 million generations starting from random trees, with trees sampled every 500 generations.
+The first 1250 trees were discarded as "burn-in" to estimate the consensus topologies and the posterior distribution of trees was used to calculate posterior probabilities for clades. 
