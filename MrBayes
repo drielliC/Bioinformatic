@@ -29,3 +29,10 @@ Etapa 5 – Sumarização das amostras dos parâmetros
 #############################################
 The chain was run for 2.5 million generations starting from random trees, with trees sampled every 500 generations.
 The first 1250 trees were discarded as "burn-in" to estimate the consensus topologies and the posterior distribution of trees was used to calculate posterior probabilities for clades. 
+
+Phylogenetic Reconstruction. Bayesian phylogenetic analyses were performed on MRBAYES 2.01 (29). All searches were started from a random tree, 
+on four different Markov chains for 2,500,000 generations and saving every 100th tree. At convergence (10,000 generations),
+the first 15,000 trees were discarded and a consensus was built. 
+Posterior Bayesian probabilities were used to evaluate branch support. 
+According to the recommendations of Foster (www.bioinf.orgmolsysdatalike.pdf), we used the GTR model with a substitution rate that varies in an intracodon position-specific
+manner (GTR  SS).
