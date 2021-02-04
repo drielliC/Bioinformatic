@@ -1,0 +1,24 @@
+Multiple Sequence Alignment (MSA) can be seen as a generalization
+of a Pairwise Sequence Alignment (PSA). Instead of aligning just two
+sequences, three or more sequences are aligned simultaneously.
+
+Clustal Omega (https://www.ebi.ac.uk/Tools/msa/clustalo/) gives directly sequence %identity matrix 
+(Result Summary -> Percent Identity Matrix in the web interface).
+
+
+muscle -in TPS_final.fa -quiet -out alignment
+andreiat@ppgbm1:~/Documents/Psidium/protein/TPS/pairwise$ clustalo --infile alignment --distmat-out output --percent-id
+--full
+
+
+ clustalo --full --percent-id --distmat-out=output.distmat -i TPS_final.fa
+ 
+ Algorithms
+ 1. Progressive: Clustal W
+2. Iterative: MUSCLE (multiple sequence
+alignment by log-expectation)
+3. Hidden Markov models: HMMER
+Clustal Omega: Iterative progressive alignment
+using hidden Markov models
+
+https://community.gep.wustl.edu/repository/course_materials_WU/annotation/MSA_with_Clustal_Omega.pdf
