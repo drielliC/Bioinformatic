@@ -47,3 +47,12 @@ lem@ppgbm1:~$ exit
 logout 
 
 Connection to 143.54.184.227 closed. 
+
+###############################################################################################3
+Counting the number of lines having a number greater than 100
+
+awk '$1>100{c++} END{print c+0}' myfile
+
+
+
+
