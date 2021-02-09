@@ -93,3 +93,9 @@ paste <(echo $parent) \
 <(tabix $1.gz $chrom:$start-$end | grep "$parent" | awk '{ if ($3 == "three_prime_UTR") print $0 }' | \
 	awk -v sum=0 -v count=0 -v OFS="\t" '{ count += 1; sum += ($5 - $4 + 1) } END { print count, sum }'); \
 done
+
+
+############################################################################################
+Extract gene coordinates from a gff file
+grep -wFf IDS_red_full PSI_RD_final_assembly.fasta.augustus.gff > location_red_full
+ cat location_red_full | awk 'BEGIN {OFS = "\t"};{if ($3=="gene") print  $1,$9,$4-1,$5,$7}' > test
