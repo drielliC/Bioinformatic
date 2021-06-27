@@ -15,3 +15,11 @@ cut -f1,2 input.fa.fai > sizes.genome
 
 
  bedtools getfasta [OPTIONS] -fi <input FASTA> -bed <BED/GFF/VCF> -fo test.fa.out
+ 
+  bedtools getfasta -fi PSI_RD_final_assembly.fasta -bed PSI_RD_final_assembly.fasta.augustus.gff -split -name
+
+
+gffread -w output_transcripts.fasta -g reference_genome.fa input_transcripts.gff
+
+
+./gffread -w red_transcripts.fasta -g ../PSI_RD_final_assembly.fasta ../PSI_RD_final_assembly.fasta
