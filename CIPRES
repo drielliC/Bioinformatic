@@ -1,0 +1,16 @@
+http://georg.iba-science.de/mrbayes.html
+http://mrbayes.sourceforge.net/Help/commref_mb3.1.txt
+
+add essa parte no nexus
+
+###############################
+begin mrbayes;
+log start filename=Teste1.log;
+lset nst=6 rates=invgamma ngammacat=4;
+prset aamodelpr=fixed(lg); 
+mcmc ngen=2500000 relburnin=yes burninfrac=0.25 nruns=2 nchains=4 printfreq=2500 samplefreq=2500 nchains=4 savebrlens=yes
+starttree=random filename=Teste1.out;
+sump relburnin=yes burninfrac=0.25 nruns=2 outputname=sumpoutput_v2.out;
+sumt relburnin=yes burninfrac=0.25 nruns=2 ntrees=1 minpartfreq=0.05 contype=Halfcompat;
+quit;
+end;
