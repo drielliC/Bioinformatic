@@ -78,3 +78,10 @@ Unlike branch-site model, site-specific models allowing ω to vary among sites w
 We use an LRT comparing M0 (one-ratio) with M3 (discrete) to test for variable selective pressure among sites, and two LRTs to test for sites evolving by positive selection, comparing: 
 M1a (Nearly Neutral) against M2a (Positive Selection), and M7 (beta) against M8 (beta & ω). The PP (posterior probability) for the sites under positive selection was calculated 
 by the Bayes empirical Bayes (BEB) method.
+
+
+######################################
+Passo a passo pra rodar seleção positiva do PHYML
+Primeiro salvei o .tree do site direto da pasta de download (não é a figura do site)
+abrir com figtree e exportar as newick 
+
