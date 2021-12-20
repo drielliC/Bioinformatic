@@ -1,0 +1,19 @@
+1)Preparando sequencias 
+Criar fasta com snps
+Ploidia de 70 - 76
+Arquivo silicoDArT (dominante - 1 para presença e 0 para ausência).
+
+Arquivo 70 silicoDArT - peguei sequencias com presenta 1 - fiz blast no transcriptoma
+Arquivo 71 silicoDArT - peguei sequencias com presenta 1 - fiz blast no transcriptoma
+Arquivo 72 silicoDArT - peguei sequencias com presenta 1 - fiz blast no transcriptoma
+Arquivo 73 silicoDArT - peguei sequencias com presenta 1 - fiz blast no transcriptoma
+...
+Arquivo 76 silicoDArT - peguei sequencias com presenta 1 - fiz blast no transcriptoma
+
+
+2)Functional Annotation
+BLAST em transcriptoma de referência
+A BLASTN homology search, with the E-value threshold of 10-5 was used to align the unique DArT sequences to the transcriptome-sequencing-based genomics resources of Psidium.
+We used the sequence identity of 90%. 
+For all five sets two consecutive searches were done: with the minimum alignment length of 100 and 200 bp. 
+Best hits against transcriptome were then used to annotation 
