@@ -1,3 +1,4 @@
 sudo
-./blast2go
+cd Blast2GO
+./Blast2GO_Launcher
 
