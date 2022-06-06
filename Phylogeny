@@ -32,6 +32,8 @@ java -jar ~/Desktop/softwares/prottest-3.4.2/prottest-3.4.2.jar -i examples/COX2
 	                                  RtREV CpREV Blosum62 VT HIVb HIVw FLU 
                 If you don't specify any matrix, all matrices displayed above will
                 be included.
+		
+	###### Prior > Clock.rate > Especificar a taxa de mutação
      -I
             Include models with a proportion of invariable sites
      -G
