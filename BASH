@@ -32,7 +32,8 @@ sed 's/\.$//' yourfile
 # Put an achor $ to only remove it from the end.
 # To make infile changes use -i option of sed.
 
-
+cat Eucalyptus_grandis.Egrandis1_0.cdna.all.fa | sed 's/>.*gene:/>/' > modified_cdn.fasta
+#tudo que vem entre o > e o gene ele deleta mantendo apenas >gene e o resto 
 ##########################################################################################################################
 Para adicionar um caminho ao PATH : Isso vai evitar que eu gaste meu tempo entrado toda hora no BEAST 
 
