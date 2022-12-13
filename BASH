@@ -9,6 +9,7 @@ cat ids_monoterp | tr \\n " " | head
 # -f2 delimita o campo que quer cortar
 #sort -u ordena e deixa characteres unicos
 cat file | cut -d, -f2 | sort -u > ids_monoterp.out
+           cut -d$'\t' -f2   #delimiter space
 
 cat -n file # count the number of lines of a file
 
