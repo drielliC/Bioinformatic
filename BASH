@@ -50,11 +50,21 @@ logout
 
 Connection to 143.54.184.227 closed. 
 
-###############################################################################################3
+###############################################################################################
 Counting the number of lines having a number greater than 100
 
 awk '$1>100{c++} END{print c+0}' myfile
 
 
+##############################################################################################
+#!/bin/bash
 
 
+input_dir=/home/lem/Desktop/UFES/
+out_dir=/home/lem/Desktop/UFES/results
+
+
+for i in  `seq -w 70 79`
+do
+	blastn -query ${input_dir}/${i}ploid/${i}ploid.fasta -out 7${i}tags_TPS_red_transcripts_blast -db ~/Desktop/UFES/func_characterized_TPS_red.fasta -num_threads  12 -evalue 1e-10 -outfmt 6
+done
