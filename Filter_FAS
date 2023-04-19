@@ -1,1 +1,5 @@
+#filter fasta based on ID pg1 pg2 pgn
 perl -ne 'if(/^>(\S+)/){$c=grep{/^$1$/}qw(pg1 pg2 pgn)}print if $c' file.fa > out.fa  
+
+#analyze seqs and join repetide ones
+perl -ne 'BEGIN{$/=">";$"=";"}($d,$_)=/(.*?)\n(.+?)>?$/s;push @{$h{lc()}},$d if$_;END{for(keys%h){print">@{$h{$_}}$_"}}' multi.seq.fasta
