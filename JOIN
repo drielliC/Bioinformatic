@@ -65,6 +65,11 @@ Beaunes Red France Great!
 Reisling White Germany Terrible!
 Riocha Red Spain Meh
 
+
+########################
+#neste caso varifica o que tem na lista 1 que não tem na lista2
+comm -23 <(sort newfile) <(sort oldfile)
+
 ########################
 join -t\; -1 1 -2 2 <(cat File1.txt | tr \\t \; | sort -k1 -t\;) <( cat File2.txt | tr \\t \; | sort -k2 -t\;) | tr \; \\t > File3.out
 
