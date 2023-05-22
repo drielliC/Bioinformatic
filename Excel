@@ -1,0 +1,7 @@
+Criar gráfico com contagem 
+1. Selecione a coluna de elementos na qual você criará um gráfico e pressione Ctrl + C chaves para copiar.
+2. Selecione uma célula preta e pressione Ctrl + V para colar a coluna selecionada. 
+3. Mantenha a coluna colada selecionada, clique em Data > Remove Duplicates, e depois clique no OK botão na caixa de diálogo Remover Duplicatas.
+4. Agora a caixa de diálogo do Microsoft Excel é exibida. Por favor clique no OK botão para fechá-lo.
+5. Selecione a célula em branco ao lado do primeiro valor da coluna colada, digite a fórmula =COUNTIF($A$2:$A$24,E2) na célula e, 
+em seguida, arraste o identificador de preenchimento automático para outras células.
