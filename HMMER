@@ -15,9 +15,8 @@ make install                      # optional: install HMMER programs and man pag
 ###################
 
 wget "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_chromosome_files/TAIR10_chr_all.fas"
- wget "https://pfam.xfam.org/family/PF03936/hmm"
- wget "http://pfam-legacy.xfam.org/family/PF01397/hmm"
- 
+wget "http://pfam-legacy.xfam.org/family/PF03936/hmm"
+wget "http://pfam-legacy.xfam.org/family/PF01397/hmm" 
  Curation & Model > download the raw HMM for this family
  #########################################################################
 ##hmmsearch searches a profile against a sequence database. The file tutorial.fa is a small example of a FASTA file containing 45
