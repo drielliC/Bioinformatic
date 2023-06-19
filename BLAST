@@ -105,3 +105,46 @@ We consider 0.1 to 0.25 to be an acceptable range for the -best_hit_overhang par
 
 % identity   | alignment length | mismatches | gap opens | q. start | q. end | s. start | s. end | evalue | bit score |
 https://www.ncbi.nlm.nih.gov/books/NBK279684/table/appendices.T.options_common_to_all_blast/
+
+************************************************************************************
+blastn
+• blastn
+• DNA :: DNA homology
+- The query is a nucleotide sequence
+- The database is a nucleotide database
+
+blastp
+• Protein :: Protein homology
+- The query is an amino acid sequence
+- The database is an amino acid database
+- Protein function exploration
+- Novel gene è make parameters more sensitive
+
+blastx
+• Coding nucleotide seq :: Protein homology
+- The query is a nucleotide sequence
+- The database is an amino acid database
+- All six reading frames are translated on the query
+and used to search the database
+- Gene finding in genomic DNA
+- Annotating ESTs and transcripts assembled from
+RNA-Seq data
+
+tblastn
+• Protein :: Coding nucleotide DB homology
+- The query is an amino sequence
+- The database is a nucleotide database
+- All six frames are translated in the database and
+searched with the protein sequence
+- Mapping a protein to a genome
+- Mining ESTs and RNA-Seq data for protein
+similarities
+
+tblastx
+• Coding :: Coding homology
+- The query is a nucleotide sequence
+- The database is a nucleotide database
+- All six frames are translated on the query and on
+the database
+- Searching distantly-related species
+- Sensitive but computationally expensive
