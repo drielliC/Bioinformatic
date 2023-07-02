@@ -1,0 +1,45 @@
+Criador do JavaScript Brendan Eich 1995
+JavaScript é utilizado tanto para front-end quanto para back-end.
+Por exemplo, ao realizar seu login em uma rede social, o front-end é responsável por realizar a coleta dos dados e enviar ao back-end,
+que verifica se suas credenciais estão corretas e devolve informações do seu perfil para o front-end, que as carrega e exibe na tela.
+Softskills necessárias para quem está começando a programar:
+Comunicação 
+Colaboração
+Capacidade de resolver problemas, pensamento crítico (Definir problema ou elaborar a estratégia agnostica; organizar problema buscando entender suas causas, 
+priorizar e selecionar alternativas mais viáveis para levar o problema a soluçao eficaz).
+
+Variáveis são como caixas que guardam informações na memória do computador e que podem ser utilizadas em todas as partes do programa.
+$ let [nome] = [valor];
+A caixa representa a variável e a etiqueta roupa representa o nome dessa variável; A 'camiseta', representa o valor da variável.
+Declarar uma variável é o mesmo que dizer “criar uma variável”. Em programação, declarar significa dizer ao computador para reservar um espaço na memória para armazenar um dado.
+$ roupa = 'moletom';
+A palavra-chave é utilizada somente quando a variável é declarada, ou seja, quando você escreve ela no código pela primeira vez. Para reatribuir um valor à uma variável, a palavra-chave não deve ser repetida.
+- REGRAS para declarar variáveis - Não pode haver espaço entre as palavras; Não é possível começar o nome de uma variável com um número, mas é possível usar números em outras posições. Por exemplo: 1comida não vai funcionar, mas comida1 funciona.
+Nomes de variáveis são sensíveis a letras maiúsculas e minúsculas. 
+Além dessas regras, existe uma convenção padrão para criação de nomes de variáveis em JavaScript chamada camelCase:
+As palavras são agrupadas em uma; O nome da variável começa com letra minúscula; Cada palavra nova começa com uma letra maiúscula, como acontece no próprio camelCase. Por exemplo: carroVermelho.
+
+Console Google > Right > Inspect > Console
+$console.log() exibe mensagem 
+Existem três palavras-chave que você pode utilizar para declarar variáveis: var, let e const.
+const : uma característica dessa palavra-chave é que ela é uma constante.
+Isto significa que, uma vez que essa variável é declarada, o valor dela não poderá ser alterado.
+Esse tipo de variável é útil para guardar valores que nunca serão alterados ao longo da execução do programa.
+ Declarações com var tem escopo global ou escopo de função/local.
+
+O escopo é global quando uma variável var é declarada fora de uma função. Isso significa que qualquer variável que seja declarada com var fora de um bloco de função pode ser utilizada na janela inteira.
+var tem escopo de função quando é declarado dentro de uma função. Isso significa que ele está disponível e pode ser acessado somente de dentro daquela função.
+Hoisting de var
+Hoisting é um mecanismo do JavaScript que faz com que as declarações de variáveis e de funções sejam movidas para o topo de seu escopo antes da execução do código.
+let tem escopo de bloco
+Um bloco é uma porção de código cercado por {}. Um bloco vive dentro dessas chaves. Tudo o que estiver cercado por chaves é um bloco.
+Declarações com const têm escopo de bloco
+Assim como as declarações de let, as declarações de const somente podem ser acessadas dentro do bloco onde foram declaradas.
+_______________________________________________________________________________________________________
+As declarações de var tem escopo global ou de função, enquanto as declarações de let e de const têm escopo de bloco.
+Variáveis de var podem ser atualizadas e declaradas novamente dentro de seu escopo. 
+As variáveis de let podem ser atualizadas, mas não podem ser declaradas novamente. 
+As variáveis de const não podem ser atualizadas nem declaradas novamente.
+Todas elas passam por hoisting para o topo de seu escopo. 
+Porém, enquanto variáveis com var são inicializadas com undefined, as variáveis com let e const não são inicializadas.
+Enquanto var e let podem ser declaradas sem ser inicializadas, const precisa da inicialização durante a declaração.
