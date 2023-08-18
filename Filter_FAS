@@ -1,3 +1,10 @@
+git clone https://github.com/lh3/seqtk.git;
+cd seqtk; make
+
+seqtk subseq ~/Documents/Psidium/transcripts/transcripts_yellow.fa ~/Documents/alunos/driii/SNP/tags.out.blastn/77-78_IDS > 77-78_transcripts.fasta
+
+
+############################################
 #filter fasta based on ID pg1 pg2 pgn
 perl -ne 'if(/^>(\S+)/){$c=grep{/^$1$/}qw(pg1 pg2 pgn)}print if $c' file.fa > out.fa  
 
