@@ -1,6 +1,22 @@
+Definition
+Differences between vitual machine and container
+
 This directory contains installation links and step-by-step instructions for all the programmes used in the project.  
 Intallation (different types os SO)
 https://docs.docker.com/engine/install/ubuntu/
 Install stable repository
 https://docs.docker.com/desktop/install/windows-install/
+Basic commands 
+Container is a running environment for image
+port binded : talk to application running inside of container 
+virtual file system
 
+docker pull 'name' ##first time run 
+docker run 'name'
+or docker run 'name':4.0 #para rodar uma versão específica
+docher ps = list of dockers running
+
+docker run -d 'name'
+docker stop 'ID'
+docker ps -a #lista os processsos que foram fechados 
+docker start 'ID'
