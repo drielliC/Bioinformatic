@@ -1,0 +1,18 @@
+OUTPUT FILES
+
+braker.codingseq: Final gene set with coding sequences in FASTA format
+braker.aa: Final gene set with protein sequences in FASTA format
+braker.gff3: Final gene set in gff3 format (only produced if the flag --gff3 was specified to BRAKER.
+
+braker.gtf: Final gene set of BRAKER. This file may contain different contents depending on how you called BRAKER
+in ETPmode: Final gene set of BRAKER consisting of genes predicted by AUGUSTUS and GeneMark-ETP that were combined and filtered by TSEBRA.
+otherwise: Union of augustus.hints.gtf and reliable GeneMark-ES/ET/EP predictions (genes fully supported by external evidence). In --esmode, this is the union of augustus.ab_initio.gtf and all GeneMark-ES genes. Thus, this set is generally more sensitive (more genes correctly predicted) and can be less specific (more false-positive predictions can be present). This output is not necessarily better than augustus.hints.gtf, and it is not recommended to use it if BRAKER was run in ESmode.
+Augustus/*: Augustus gene set(s) in as gtf/conding/aa files
+GeneMark-E*/genemark.gtf: Genes predicted by GeneMark-ES/ET/EP/EP+/ETP in GTF-format.
+hintsfile.gff: The extrinsic evidence data extracted from RNAseq.bam and/or protein data.
+braker_original/*: Genes predicted by BRAKER (TSEBRA merge) before compleasm was used to improve BUSCO completeness
+bbc/*: output folder of best_by_compleasm.py script from TSEBRA that is used to improve BUSCO completeness in the final output of BRAKER
+
+Output files may be present with the following name endings and formats:
+Coding sequences in FASTA-format are produced if the flag --skipGetAnnoFromFasta was not set.
+Protein sequence files in FASTA-format are produced if the flag --skipGetAnnoFromFasta was not set.
