@@ -73,3 +73,8 @@ for i in  `seq -w 70 79`
 do
 	blastn -query ${input_dir}/${i}ploid/${i}ploid.fasta -out 7${i}tags_TPS_red_transcripts_blast -db ~/Desktop/UFES/func_characterized_TPS_red.fasta -num_threads  12 -evalue 1e-10 -outfmt 6
 done
+#########################BASH Programming#####################################################################
+# LINK https://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html #
+
+#!/bin/bash          
+        tar -cZf /var/my-backup.tgz /home/me/
