@@ -27,7 +27,8 @@ java -jar ~/Documents/Psidium/transcripts/analises/Trimmomatic-0.39/trimmomatic-
 
 #Mapping – Take the data in the trimmed fastQ file and map it to a reference genome to create a BAM file of mapped positions
 
-~/Documents/Psidium/montagem$ hisat2-build PSI_RD_final_assembly.fasta  PSI_RD_final_assembly_index
+#Create an index
+hisat2-build genome.fa genome_index
 
 hisat2 -p N --dta-cufflinks -x path/to/reference/fileName -1 path/to/fastqFile/sample_1.fastq -2 path/to/fastqFile/sample_2.fastq -S /path/to/outDir/fileName.sam &> /path/to/outDir/fileName.sam.info
 hisat2 -p 10 --dta-cufflinks -x PSI_RD_final_assembly_index -1 ../transcripts/analises/leave1_1_rd.fastq -2 ../transcripts/analises/leave1_2_rd.fastq -S leave1.sam
