@@ -1,3 +1,19 @@
+sudo apt-get update
+sudo apt-get install ncbi-blast+
+blastn -version
+
+#Use o comando rsync para baixar o banco de dados NR:
+rsync -avz rsync://ftp.ncbi.nlm.nih.gov/blast/db/nr.* .
+
+#Descomprima os arquivos baixados:
+for f in nr.*.tar.gz; do tar -xzvf $f; done
+
+
+########### WGET
+wget -c ftp://ftp.ncbi.nlm.nih.gov/blast/db/nr.*.tar.gz
+
+
+
 ###########wget "ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.??.tar.gz"
 wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nr.*.tar.gz'
 cat nr.*.tar.gz | tar -zxvi -f - -C .
@@ -9,7 +25,6 @@ tar xzf diamond-linux64.tar.gz
 
 wget ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA/nr.gz
 ls -l filename
--rw-rw-r-- 1 andreiat andreiat 21631091360 Nov 26 07:25 nr.gz
 
 diamond makedb --in nr.gz -d nr
 
