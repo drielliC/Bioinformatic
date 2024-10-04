@@ -1,3 +1,16 @@
+BLAST significa Ferramenta de Busca por Alinhamento Local (Basic Local Alignment Search Tool) .
+Esta ferramenta é mantida pelo NCBI (National Center for Biotechnology Information), um banco público
+norte americano de biologia molecular que reúne sequências de proteínas e de nucleotídeos de
+diferentes espécies, bem como ferramentas que permitem o seu estudo, disponível em: www.ncbi.nlm.nih.gov/BLAST/
+O BLAST é um algoritmo que serve para compararmos sequências biológicas, como trechos de aminoácidos ou nucleotídeos de diferentes espécies. 
+Embora menos eficiente que outros programas de alinhamento (como o Bowtie), o uso do Blast é importante para termos uma ideia da qualidade dos
+nossos dados, sendo que os seus resultados poderão ser usados para comparação com aqueles obtidos
+por outros programas.
+Porém, no nosso caso, é possível baixar e instalar no computador ou servidor essa ferramento de alinhamento, a partir do seguinte comando:
+~$ sudo apt-get install ncbi-blast+
+Dessa forma, poderemos buscar por sequências de interesse em nossa biblioteca de cDNA.
+_____________________________________________________________________________________
+
 |Program	    | Task Name |	Description |
 |blastp       |	blastp	  |Traditional BLASTP to compare a protein query to a protein database
 |blastp-short |	BLASTP    |optimized for queries shorter than 30 residues
@@ -89,22 +102,44 @@ Aceptable range
 -H 0.1 to 0.25
 Overhang  - consider the size of alignment
 Score Edge - consider the size of query
-#############################################
-exemple
-makeblastdb -in test.fsa -parse_seqids -dbtype prot
+##########################################################
+ # Criar os arquivos DB (database) de referência do BLAST, a partir da biblioteca em fasta:
+ makeblastdb -in nome_da_biblioteca.fasta -dbtype nucl
+ makeblastdb -in test.fsa -nome_da_biblioteca.fasta -dbtype prot
+ 
+ Onde:
+• in → indica que o arquivo a seguir ser modificado;
+• -dbtype → indica o tipo de arquivo da biblioteca fasta (proteína ou nucleotídeo – o
+padrão é proteína, por isso precisa colocar nucl).
+Com isso, serão gerados os arquivos índices (com as extensões .nhr, .nin e .nsq) que serão
+utilizados pelo BLAST para fazer o alinhamento com as nossas sequências de interesse.
+
+# Em seguida, é possível fazer a busca da sequência de interesse em nossa biblioteca:
+
+blastn -query nome_do_arquivo.fasta -db nome_da_biblioteca.fasta -out nome_do_arquivo.fasta.res -evalue 10e-20 -outfmt 6
 blastn -db genes.fa -query seqs.fa -evalue 1e-5 -num_threads 24 -out out.blastn.tsv  -outfmt 10
--dbtype nucl
+tblastn -query transcripts.fa -out transcripts.blast.txt -task megablast -db refseq_rna -num_threads 12 -evalue 1e-10 -best_hit_score_edge 0.05 -best_hit_overhang 0.25 -outfmt 7 -perc_identity 50 -max_target_seqs 1 &
+ 
+Onde:
+• -query → informa ao BLAST a sequência que será buscada na biblioteca;
+• -db → informa ao BLAST a biblioteca onde será feita a busca;
+• -out → informa ao BLAST o nome do arquivo de saída onde serão gravados os resultados;
+• -evalue 10e-20 → determina os alinhamentos que serão mantidos no arquivo de saída,
+considerando um valor mínimo de probabilidade (quanto menor o evalue mais
+significativo é o escore e o alinhamento – ou seja, menor é a probabilidade de que o
+alinhamento tenha ocorrido apenas por acaso), sendo o default = 10;
+• -outfmt → formato em que o arquivo de saída será gravado [Opções: 0 = pairwise, 1 =
+query-anchored showing identities, 2 = query-anchored no identities, 3 = flat query-
+anchored, show identities, 4 = flat query-anchored, no identities, 5 = XML Blast output, 6
+= tabular, 7 = tabular with comment lines, 8 = Text ASN.1, 9 = Binary ASN.1, 10 =
+Comma-separated values, 11 = BLAST archive format (ASN.1)].
 
-blastn -query transcripts.fa -out transcripts.blast.txt -task megablast -db refseq_rna -num_threads 12 -evalue 1e-10 -best_hit_score_edge 0.05 -best_hit_overhang 0.25 -outfmt 7 -perc_identity 50 -max_target_seqs 1 &
-tblastn
-- parametros que podem ser adicionados no blast - como se fosse o best hit:
 
--best_hit_score_edge 0.05 -best_hit_overhang 0.25
-
-We consider 0.1 to 0.25 to be an acceptable range for the -best_hit_overhang parameter and 0.05 to 0.25 to be an acceptable range for the -best_hit_score_edge parameter. Increasing the value of the overhang parameter eliminates a higher number of matches, but increases the running time; increasing the score_edge parameter removes smaller number of hits.
-
-% identity   | alignment length | mismatches | gap opens | q. start | q. end | s. start | s. end | evalue | bit score |
-https://www.ncbi.nlm.nih.gov/books/NBK279684/table/appendices.T.options_common_to_all_blast/
+ - parametros que podem ser adicionados no blast - como se fosse o best hit:
+ -best_hit_score_edge 0.05 -best_hit_overhang 0.25
+ We consider 0.1 to 0.25 to be an acceptable range for the -best_hit_overhang parameter and 0.05 to 0.25 to be an acceptable range for the -best_hit_score_edge parameter. Increasing the value of the overhang parameter eliminates a higher number of matches, but increases the running time; increasing the score_edge parameter removes smaller number of hits.
+ % identity   | alignment length | mismatches | gap opens | q. start | q. end | s. start | s. end | evalue | bit score |
+ https://www.ncbi.nlm.nih.gov/books/NBK279684/table/appendices.T.options_common_to_all_blast/
 
 ************************************************************************************
 blastn
