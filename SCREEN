@@ -11,4 +11,6 @@ screen -ls
 [Ctrl]+[a]+[d] # deatach e retorna pro prompt normal  
 
 #para abrir uma screen 
+screen -r <ID_da_sessão>
 screen -rd 2216.pts-0.ubuntu16
+
