@@ -1,32 +1,14 @@
+#instalação
 sudo dnf install screen
 apt install screen
-
+_____________________
+#uso
+#abrir uma screen 
 screen -S NAME_OF_COMMAND
+#ver quantas screens estão abertas
 screen -ls 
 
-Open a new screen 
-[Ctrl]+[a]+[c] 
+[Ctrl]+[a]+[d] # deatach e retorna pro prompt normal  
 
-Now let's ping our server with the command: 
-ping 192.168.1.208 (insert the IP address of your server). 
-With that ping running, we can switch back to the previous screen with the key combination
-[Ctrl]+[a]+[p] (which switches to the previous screen). You should now be back to your sudo tail -f /var/log/syslog screen. 
-Hit the [Ctrl]+[a]+[n] (which switches to the next screen), and you're back to the ping command.
-
-If you need to step away from the terminal, 
-but want the command to continue running, 
-you can manually detach the screen to reconnect with it later with the key combination 
-[Ctrl]+[a]+[d]. This will return you to the standard prompt.
-
-
-**the only screens you can reconnect to are those listed as Disconnected. 
-This will happen if screen detects a network disconnection. If you become disconnected, and the screens haven't detached, 
-you can detach and reconnect with them manually with the command:
+#para abrir uma screen 
 screen -rd 2216.pts-0.ubuntu16
-
-
-################################################################################################
-or
-
-$ nohup abcd &
-$ exit
