@@ -1,3 +1,19 @@
+Ou use o Pfam FTP:
+
+bash
+wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz
+gunzip Pfam-A.hmm.gz
+Depois, extraia o modelo específico:
+
+bash
+hmmfetch Pfam-A.hmm PF00195 > PF00195.hmm
+3. Execute o hmmsearch com o Arquivo Correto
+bash
+hmmsearch PF00195.hmm Arachis.fa
+
+
+
+_________________________________________________
 #Donwload
 http://hmmer.org/download.html
 #uncompress   
