@@ -1,16 +1,37 @@
-Ou use o Pfam FTP:
+#################################### Criar arquivo fasta a partir de gff3
+#Extraiu os helitrons em nucleotideo
 
-bash
+python extract_helitrons.py -g Sta_helitrons.gff3 -f Psta.fa -o Psta_helitrons.fasta
+
+#onde -g gff3
+#-f fasta do genoma
+#-o output que irá conter apenas os helitrons em formato fasta
+
+#Para  extrair as ORFs de dentro de cada helitron o fluxo correto é:
+helitrons.fasta  →  getorf  →  ORFs internas  →  hmmsearch
+#atenção com o frame de leitura (se a tradução tiver * signifca que a orf foi traduzida erroneamente e entrou vários stop codons inexistentes)
+
+# Extrair ORFs de mínimo 300 nt (= 100 aa) de cada helitron
+getorf -sequence helitrons.fasta outseq Psta_helitrons_orfs.fasta -minsize 300 -find 1
+
+
+# Rodar hmmsearch nas ORFs
+hmmsearch --domtblout results_HelRep.tbl \
+          -E 1e-5 --cpu 8 \
+          HelRep.hmm helitrons_orfs.fasta
+
+
+#################################### Intalar o programa 
 wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz
+
+Baixar o hmm do site do PFAM (Helitron helicase-like domain at N-terminus)
+https://www.ebi.ac.uk/interpro/wwwapi//entry/pfam/PF14214?annotation=hmm
+
 gunzip Pfam-A.hmm.gz
-Depois, extraia o modelo específico:
 
-bash
-hmmfetch Pfam-A.hmm PF00195 > PF00195.hmm
-3. Execute o hmmsearch com o Arquivo Correto
-bash
-hmmsearch PF00195.hmm Arachis.fa
-
+##################################### Para rodar a busca
+#sempre usar o proteoma
+hmmsearch PF00195.hmm Psta_helitrons.fasta
 
 
 _________________________________________________
